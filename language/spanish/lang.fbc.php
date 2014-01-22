@@ -204,7 +204,7 @@ al panel de control del módulo en el Panel de Control de ExpressionEngine",
 "Actualizar el módulo FBC",
 
 'fbc_update_message' =>
-"Parece que has subido una nueva versión del FBC. Por favor ejecute el script de actualización, haga clic en el botón 'Actualizar' de abajo".,
+"Parece que has subido una nueva versión del FBC. Por favor ejecute el script de actualización, haga clic en el botón 'Actualizar' de abajo.",
 
 //----------------------------------------
 //  API errors
