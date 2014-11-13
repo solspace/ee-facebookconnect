@@ -1,15 +1,16 @@
 <?php
 
  /**
- * Solspace - FBC
+ * Facebook Connect - Language
  *
- * @package 	Solspace:FBC
- * @author		Solspace DevTeam
- * @copyright	Copyright (c) 2010-2012, Solspace, Inc.
- * @link		http://www.solspace.com/docs/addon/c/Facebook_Connect/
- * @version		2.0.9
+ * @package		Solspace:Facebook Connect
+ * @author		Solspace, Inc.
+ * @copyright	Copyright (c) 2010-2013, Solspace, Inc.
+ * @link		http://solspace.com/docs/facebook_connect
+ * @license		http://www.solspace.com/license_agreement
+ * @version		2.1.3
  * @translated to spanish by Coterfield
- * @filesource 	./system/expressionengine/third_party/fbc/language/spanish/
+ * @filesource 	fbc/language/spanish/lang.fbc.php
  */
 
 $lang = $L = array(
@@ -81,7 +82,7 @@ $lang = $L = array(
 "Intentaremos conectar a la API de Facebook una vez que hayas ingresado con tu cuenta. Si después de acceder a Facebook usando el botón de arriba esta conexión no se ha establecido, confirme la ID de su aplicación y las configuraciones de API secretas en el sitio de Facebook.",
 
 'api_connect_was_successful' =>
-"La conexión API FUE establecida".,
+"La conexión API FUE establecida.",
 
 'api_connect_was_not_successful' =>
 "La conexión API NO FUE establecido.",
@@ -203,7 +204,7 @@ al panel de control del módulo en el Panel de Control de ExpressionEngine",
 "Actualizar el módulo FBC",
 
 'fbc_update_message' =>
-"Parece que has subido una nueva versión del FBC. Por favor ejecute el script de actualización, haga clic en el botón 'Actualizar' de abajo".,
+"Parece que has subido una nueva versión del FBC. Por favor ejecute el script de actualización, haga clic en el botón 'Actualizar' de abajo.",
 
 //----------------------------------------
 //  API errors
@@ -317,6 +318,111 @@ al panel de control del módulo en el Panel de Control de ExpressionEngine",
 "facebook_field_metadata_failed" =>
 "El registro de Facebook no se realizó correctamente.",
 
+// -------------------------------------
+//	demo install (code pack)
+// -------------------------------------
+
+'demo_description' =>
+'These demonstration templates will help you understand better how the Solspace Facebook Connect Addon works.',
+
+'template_group_prefix' =>
+'Template Group Prefix',
+
+'template_group_prefix_desc' =>
+'Each Template group and global variable installed will be prefixed with this variable in order to prevent colission.',
+
+'groups_and_templates' =>
+"Groups and Templates to be installed",
+
+'groups_and_templates_desc' =>
+"These template groups and their accompanying templates will be installed into your ExpressionEngine installation.",
+
+'screenshot' =>
+'Screenshot',
+
+'install_demo_templates' =>
+'Install Demo Templates',
+
+'prefix_error' =>
+'Prefixes, which are used for template groups, may only contain alpha-numeric characters, underscores, and dashes.',
+
+'demo_templates' =>
+'Demo Templates',
+
+//errors
+'ee_not_running'				=>
+'ExpressionEngine 2.x does not appear to be running.',
+
+'invalid_code_pack_path'		=>
+'Invalid Code Pack Path',
+
+'invalid_code_pack_path_exp'	=>
+'No valid codepack found at \'%path%\'.',
+
+'missing_code_pack'				=>
+'Code Pack missing',
+
+'missing_code_pack_exp'			=>
+'You have chosen no code pack to install.',
+
+'missing_prefix'				=>
+'Prefix needed',
+
+'missing_prefix_exp'			=>
+'Please provide a prefix for the sample templates and data that will be created.',
+
+'invalid_prefix'				=>
+'Invalid prefix',
+
+'invalid_prefix_exp'			=>
+'The prefix you provided was not valid.',
+
+'missing_theme_html'			=>
+'Missing folder',
+
+'missing_theme_html_exp'		=>
+'There should be a folder called \'html\' inside your site\'s \'/themes/solspace_themes/code_pack/%code_pack_name%\' folder. Make sure that it is in place and that it contains additional folders that represent the template groups that will be created by this code pack.',
+
+'missing_codepack_legacy'		=>
+'Missing the CodePackLegacy library needed to install this legacy codepack.',
+
+//@deprecated
+'missing_code_pack_theme'		=>
+'Code Pack Theme missing',
+
+'missing_code_pack_theme_exp'	=>
+'There should be at least one theme folder inside the folder \'%code_pack_name%\' located inside \'/themes/code_pack/\'. A theme is required to proceed.',
+
+//conflicts
+'conflicting_group_names'		=>
+'Conflicting template group names',
+
+'conflicting_group_names_exp'	=>
+'The following template group names already exist. Please choose a different prefix in order to avoid conflicts. %conflicting_groups%',
+
+'conflicting_global_var_names'	=>
+'Conflicting global variable names.',
+
+'conflicting_global_var_names_exp' =>
+'There were conflicts between global variables on your site and global variables in this code pack. Consider changing your prefix to resolve the following conflicts. %conflicting_global_vars%',
+
+//success messages
+'global_vars_added'				=>
+'Global variables added',
+
+'global_vars_added_exp'			=>
+'The following global template variables were successfully added. %global_vars%',
+
+'templates_added'				=>
+'Templates were added',
+
+'templates_added_exp'			=>
+'%template_count% templates were successfully added to your site as part of this code pack.',
+
+"home_page"						=>"Home Page",
+"home_page_exp"					=> "View the home page for this code pack here: %link%",
+
+
 //----------------------------------------
 //	Commenting
 //----------------------------------------
@@ -330,4 +436,3 @@ al panel de control del módulo en el Panel de Control de ExpressionEngine",
 /* FIN */
 ''=>''
 );
-?>
