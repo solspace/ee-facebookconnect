@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Facebook Connect - Brazilian Portugese Language
+ * Facebook Connect - Brazilian Portuguese Language
  *
  * @package		Solspace:Facebook Connect
  * @author		Solspace, Inc.
@@ -11,7 +11,7 @@
  * @version		2.0.9
  * @filesource	fbc/language/brazilian/lang.fbc.php
  *
- *Translated to Brazilian Portugese by MarchiMedia
+ *Translated to Brazilian Portuguese by MarchiMedia
  */
 
 $lang = $L = array(
