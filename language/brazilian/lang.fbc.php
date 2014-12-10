@@ -74,7 +74,7 @@ $lang = $L = array(
 "Já logado no Facebook?",
 
 'logged_in_to_facebook_exp' =>
-"Tenha certeza que você já está conectado na sua conta Facebook utilizando este botão. WNós iremos tentar conectar à API.",
+"Tenha certeza que você já está conectado na sua conta Facebook utilizando este botão. Nós iremos tentar conectar à API.",
 
 'api_successful_connect' =>
 "Conexão à API com sucesso?",
@@ -141,7 +141,7 @@ $lang = $L = array(
 "Obrigar ativação de Conta de Membro para Usuários do Facebook?",
 
 'fbc_require_member_account_activation_exp' =>
-"Você pode sobregravar suas preferências primárias de r4egistro de membro aqui. Se alguém registrar no seu site utilizando o o formulário de registro incluído neste módulo, esta configuração será respeitada. Note que se você utilizar a opção de registro passivo no seu site, esta configuração será ignorada.",
+"Você pode sobregravar suas preferências primárias de registro de membro aqui. Se alguém registrar no seu site utilizando o o formulário de registro incluído neste módulo, esta configuração será respeitada. Note que se você utilizar a opção de registro passivo no seu site, esta configuração será ignorada.",
 
 'fbc_no_activation' =>
 "Nenhuma ativação necessária",
@@ -246,7 +246,7 @@ $lang = $L = array(
 "Sua conta atualmente não está sincornizada com uma conta do Facebook.",
 
 'unsync_error' =>
-"Ocorreu um erro ao dessincroziar qualquer conta do Facebook do seu perfil do site.",
+"Ocorreu um erro ao dessincronizar qualquer conta do Facebook do seu perfil do site.",
 
 //----------------------------------------
 //  Erros de Registro
