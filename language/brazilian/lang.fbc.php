@@ -1,15 +1,17 @@
 <?php
 
- /**
- * Solspace - FBC
+/**
+ * Facebook Connect - Brazilian Portugese Language
  *
- * @package 	Solspace:FBC
- * @author		Solspace DevTeam
- * @copyright	Copyright (c) 2010-2012, Solspace, Inc.
- * @link		http://www.solspace.com/docs/addon/c/Facebook_Connect/
+ * @package		Solspace:Facebook Connect
+ * @author		Solspace, Inc.
+ * @copyright	Copyright (c) 2010-2014, Solspace, Inc.
+ * @link		http://solspace.com/docs/facebook_connect
+ * @license		http://www.solspace.com/license_agreement
  * @version		2.0.9
- * @translated to brazilian portugues by MarchiMedia
- * @filesource 	./system/expressionengine/third_party/fbc/language/english/
+ * @filesource	fbc/language/brazilian/lang.fbc.php
+ *
+ *Translated to Brazilian Portugese by MarchiMedia
  */
 
 $lang = $L = array(
@@ -19,7 +21,7 @@ $lang = $L = array(
 //----------------------------------------
 
 "fbc_module_name" =>
-"FBC",
+"Facebook Connect",
 
 "fbc_module_description" =>
 "Integra o Facebook com o seu site",

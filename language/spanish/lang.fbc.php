@@ -1,16 +1,17 @@
 <?php
 
- /**
- * Facebook Connect - Language
+/**
+ * Facebook Connect - Spanish Language
  *
  * @package		Solspace:Facebook Connect
  * @author		Solspace, Inc.
- * @copyright	Copyright (c) 2010-2013, Solspace, Inc.
+ * @copyright	Copyright (c) 2010-2014, Solspace, Inc.
  * @link		http://solspace.com/docs/facebook_connect
  * @license		http://www.solspace.com/license_agreement
  * @version		2.1.3
- * @translated to spanish by Coterfield
- * @filesource 	fbc/language/spanish/lang.fbc.php
+ * @filesource	fbc/language/spanish/lang.fbc.php
+ *
+ * Translated to Spanish by Coterfield
  */
 
 $lang = $L = array(
@@ -20,7 +21,7 @@ $lang = $L = array(
 //----------------------------------------
 
 "fbc_module_name" =>
-"FBC",
+"Facebook Connect",
 
 "fbc_module_description" =>
 "Integra Facebook con su sitio web",
