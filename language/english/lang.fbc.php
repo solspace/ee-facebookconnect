@@ -1,14 +1,15 @@
 <?php
 
- /**
- * Solspace - FBC
+/**
+ * Facebook Connect - Language
  *
- * @package 	Solspace:FBC
- * @author		Solspace DevTeam
- * @copyright	Copyright (c) 2010-2012, Solspace, Inc.
- * @link		http://www.solspace.com/docs/addon/c/Facebook_Connect/
- * @version		2.0.9
- * @filesource 	./system/expressionengine/third_party/fbc/language/english/
+ * @package		Solspace:Facebook Connect
+ * @author		Solspace, Inc.
+ * @copyright	Copyright (c) 2010-2014, Solspace, Inc.
+ * @link		http://solspace.com/docs/facebook_connect
+ * @license		http://www.solspace.com/license_agreement
+ * @version		2.1.4
+ * @filesource	fbc/language/english/lang.fbc.php
  */
 
 $lang = $L = array(
@@ -18,7 +19,7 @@ $lang = $L = array(
 //----------------------------------------
 
 "fbc_module_name" =>
-"FBC",
+"Facebook Connect",
 
 "fbc_module_description" =>
 "Integrate Facebook with your website",
@@ -59,7 +60,7 @@ $lang = $L = array(
 "API Credentials Present?",
 
 'api_credentials_present_exp' =>
-"In order to connect to Facebook you need to have registered your site as a Facebook application and have received an application ID and a secret hash string.<br /><a href='http://www.facebook.com/developers/createapp.php' target='_blank'>Establish your site as a Facebook application here.</a>",
+"In order to connect to Facebook you need to have created a Facebook App for your site (on Facebook) and have received an App ID and an App Secret hash string.<br /><a href='https://developers.facebook.com/apps' target='_blank'>Create a Facebook App here.</a>",
 
 'api_credentials_are_present' =>
 "API credentials ARE present",
@@ -77,7 +78,7 @@ $lang = $L = array(
 "Successful API Connection?",
 
 'api_successful_connect_exp' =>
-"We attempt to connect to the Facebook API once you login with your account. If, after logging into Facebook using the button above, this connection is not established, confirm your APP ID and API Secret settings on the Facebook site.",
+"We attempt to connect to the Facebook API once you login with your account. If, after logging into Facebook using the button above, this connection is not established, confirm your App ID and App Secret settings on the Facebook site.",
 
 'api_connect_was_successful' =>
 "An API connection WAS established.",
@@ -111,16 +112,16 @@ $lang = $L = array(
 "Your preferences have been updated.",
 
 'fbc_app_id' =>
-"Facebook Application ID",
+"Facebook App ID",
 
 'fbc_app_id_exp' =>
-"The application ID is provided by Facebook when you register your website as a Facebook application. <a href='http://www.facebook.com/developers/createapp.php' target='_blank'>Establish your site as a Facebook application here.</a>",
+"The App ID is provided by Facebook when you create a Facebook App for your website. <a href='https://developers.facebook.com/apps' target='_blank'>Create a Facebook App here.</a>",
 
 'fbc_secret' =>
-"Facebook Application Secret",
+"Facebook App Secret",
 
 'fbc_secret_exp' =>
-"In addition to an application ID from Facebook, you will also receive a secret string. This provides an added layer of security for your Facebook integration.",
+"In addition to an App ID from Facebook, you will also receive a secret code. This provides an added layer of security for your Facebook integration.",
 
 'fbc_eligible_member_groups' =>
 "Eligible Member Groups",
@@ -153,7 +154,7 @@ $lang = $L = array(
 "Confirm Before Syncing Accounts?",
 
 'fbc_confirm_account_sync_exp' =>
-"When set to yes, if someone is logged into EE and logs into Facebook on your site, they must first submit the account_sync_form before their Facebook account will be synced with their EE account.",
+"When set to yes, if someone is logged into EE and logs into Facebook on your site, they must first submit the FBC:Account_Sync_Form tag before their Facebook account will be synced with their EE account.",
 
 'fbc_passive_registration' =>
 "Enable Passive Registration?",
@@ -182,7 +183,7 @@ $lang = $L = array(
 "The Facebook Connect URL should be a valid URL and a reference to a directory only. Do not include the name of the xd_receiver.htm file.",
 
 'fbc_module_disabled' =>
-"The FBC module is currently disabled.  Please insure it is installed and up to date by going 
+"The FBC module is currently disabled.  Please insure it is installed and up to date by going
 to the module's control panel in the ExpressionEngine Control Panel",
 
 'disable_module_to_disable_extension' =>
@@ -219,7 +220,7 @@ to the module's control panel in the ExpressionEngine Control Panel",
 "You are not authorized to access this website.",
 
 'mbr_account_not_active' =>
-"You have an account that has not yet been activated by this website's webmaster.",
+"You have an account that has not yet been activated by this website's administrator.",
 
 'multi_login_warning' =>
 "You have already logged into this site from another web browser.",
@@ -316,6 +317,111 @@ to the module's control panel in the ExpressionEngine Control Panel",
 "facebook_field_metadata_failed" =>
 "The Facebook registration was not successful.",
 
+// -------------------------------------
+//	demo install (code pack)
+// -------------------------------------
+
+'demo_description' =>
+'These demonstration templates will help you understand better how the Solspace Facebook Connect Addon works.',
+
+'template_group_prefix' =>
+'Template Group Prefix',
+
+'template_group_prefix_desc' =>
+'Each Template group and global variable installed will be prefixed with this variable in order to prevent colission.',
+
+'groups_and_templates' =>
+"Groups and Templates to be installed",
+
+'groups_and_templates_desc' =>
+"These template groups and their accompanying templates will be installed into your ExpressionEngine installation.",
+
+'screenshot' =>
+'Screenshot',
+
+'install_demo_templates' =>
+'Install Demo Templates',
+
+'prefix_error' =>
+'Prefixes, which are used for template groups, may only contain alpha-numeric characters, underscores, and dashes.',
+
+'demo_templates' =>
+'Demo Templates',
+
+//errors
+'ee_not_running'				=>
+'ExpressionEngine 2.x does not appear to be running.',
+
+'invalid_code_pack_path'		=>
+'Invalid Code Pack Path',
+
+'invalid_code_pack_path_exp'	=>
+'No valid codepack found at \'%path%\'.',
+
+'missing_code_pack'				=>
+'Code Pack missing',
+
+'missing_code_pack_exp'			=>
+'You have chosen no code pack to install.',
+
+'missing_prefix'				=>
+'Prefix needed',
+
+'missing_prefix_exp'			=>
+'Please provide a prefix for the sample templates and data that will be created.',
+
+'invalid_prefix'				=>
+'Invalid prefix',
+
+'invalid_prefix_exp'			=>
+'The prefix you provided was not valid.',
+
+'missing_theme_html'			=>
+'Missing folder',
+
+'missing_theme_html_exp'		=>
+'There should be a folder called \'html\' inside your site\'s \'/themes/solspace_themes/code_pack/%code_pack_name%\' folder. Make sure that it is in place and that it contains additional folders that represent the template groups that will be created by this code pack.',
+
+'missing_codepack_legacy'		=>
+'Missing the CodePackLegacy library needed to install this legacy codepack.',
+
+//@deprecated
+'missing_code_pack_theme'		=>
+'Code Pack Theme missing',
+
+'missing_code_pack_theme_exp'	=>
+'There should be at least one theme folder inside the folder \'%code_pack_name%\' located inside \'/themes/code_pack/\'. A theme is required to proceed.',
+
+//conflicts
+'conflicting_group_names'		=>
+'Conflicting template group names',
+
+'conflicting_group_names_exp'	=>
+'The following template group names already exist. Please choose a different prefix in order to avoid conflicts. %conflicting_groups%',
+
+'conflicting_global_var_names'	=>
+'Conflicting global variable names.',
+
+'conflicting_global_var_names_exp' =>
+'There were conflicts between global variables on your site and global variables in this code pack. Consider changing your prefix to resolve the following conflicts. %conflicting_global_vars%',
+
+//success messages
+'global_vars_added'				=>
+'Global variables added',
+
+'global_vars_added_exp'			=>
+'The following global template variables were successfully added. %global_vars%',
+
+'templates_added'				=>
+'Templates were added',
+
+'templates_added_exp'			=>
+'%template_count% templates were successfully added to your site as part of this code pack.',
+
+"home_page"						=>"Home Page",
+"home_page_exp"					=> "View the home page for this code pack here: %link%",
+
+
 //----------------------------------------
 //	Commenting
 //----------------------------------------
@@ -329,4 +435,3 @@ to the module's control panel in the ExpressionEngine Control Panel",
 /* END */
 ''=>''
 );
-?>
