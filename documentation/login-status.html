@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Login Status | Fbc | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Fbc</a></li>
+						<li>Login Status</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><h3>Setup</h3>
+
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="updates.html">Updates</a></li>
+</ul></li>
+<li><h3>Getting Started</h3>
+
+<ul>
+<li><a href="control-panel.html">Control Panel</a></li>
+<li><a href="creating-a-facebook-app.html">Creating a Facebook App</a></li>
+<li><a href="overview-important-notes.html">Overview &amp; Important Notes</a></li>
+<li><a href="behind-the-scenes.html">Behind the Scenes</a></li>
+<li><a href="publishing-to-facebook.html">Publishing to Facebook</a></li>
+</ul></li>
+<li><h3>Templating</h3>
+
+<ul>
+<li><a href="account-sync-form.html">Account Sync Form</a></li>
+<li><a href="fb-comments-box.html">FB Comments Box</a></li>
+<li><a href="fb-like-button.html">FB Like Button</a></li>
+<li><a href="login.html">Login</a></li>
+<li class="current"><a href="login-status.html">Login Status</a></li>
+<li><a href="member-data.html">Member Data</a></li>
+<li><a href="permissions.html">Permissions</a></li>
+<li><a href="prepare-page.html">Prepare Page</a></li>
+<li><a href="set-permissions.html">Set Permissions</a></li>
+</ul></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<h1>FBC:Login_Status template tag</h1>
+
+<p>This is a simple tag that allows you to use conditionals to determine whether or not a user is Facebook logged in, EE logged in or both. This tag is also handy for troubleshooting on your site.</p>
+
+<p><strong>NOTE: Due to some security settings and limitations by Facebook, conditionals that check to see if the user is logged into Facebook will not work until the user has made some kind of interaction (to generate a valid security token to Facebook) with the Facebook Connect add-on on your site.</strong></p>
+
+<pre class="brush: html;">{exp:fbc:login_status} content {/exp:fbc:login_status}</pre>
+
+<ul>
+<li><a href="#conditionals">Conditionals</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul>
+
+<p><a name="conditionals"></a></p>
+
+<h2>Conditionals</h2>
+
+<p>The following conditionals are available for use:</p>
+
+<ul>
+<li><a href="#fbc_logged_into_ee">if fbc_logged_into_ee</a></li>
+<li><a href="#fbc_logged_into_facebook">if fbc_logged_into_facebook</a></li>
+<li><a href="#fbc_logged_into_facebook_and_ee">if fbc_logged_into_facebook_and_ee</a></li>
+</ul>
+
+<p><a name="fbc_logged_into_ee"></a></p>
+
+<h3>fbc_logged_into_ee</h3>
+
+<pre class="brush: html;">{if fbc_logged_into_ee == "y"}{/if} </pre>
+
+<p>This conditonal checks to see if the user is logged into EE. Similar to the native EE conditional.</p>
+
+<p><a name="fbc_logged_into_facebook"></a></p>
+
+<h3>fbc_logged_into_facebook</h3>
+
+<pre class="brush: html;">{if fbc_logged_into_facebook == "y"}{/if}</pre>
+
+<p>This conditonal checks to see if the user is logged into Facebook.</p>
+
+<p><strong>NOTE: Due to some security settings and limitations by Facebook, conditionals that check to see if the user is logged into Facebook will not work until the user has made some kind of interaction (to generate a valid security token to Facebook) with the Facebook Connect add-on on your site.</strong></p>
+
+<p><a name="fbc_logged_into_facebook_and_ee"></a></p>
+
+<h3>fbc_logged_into_facebook_and_ee</h3>
+
+<pre class="brush: html;">{if fbc_logged_into_facebook_and_ee == "y"}{/if}</pre>
+
+<p>This conditonal checks to see if the user is logged into Facebook AND logged into EE, AND the two accounts are synced to each other.</p>
+
+<p><a name="examples"></a></p>
+
+<h2>Examples</h2>
+
+<p>Below is an example of how to show/hide content based on whether or not the user is currently Facebook (synced) logged into your site:</p>
+
+<pre class="brush: html;">{exp:fbc:login_status}
+    {if fbc_logged_into_facebook_and_ee == "y"}
+
+        &lt;!-- Show Facebook logged in related controls/info here --&gt;
+
+    {if:else}
+        &lt;p&gt;You have not synced your EE and Facebook accounts yet.&lt;/p&gt;
+    {/if}
+{/exp:fbc:login_status}
+</pre>
+
+<p>Below is what some troubleshooting code might look like for your site.</p>
+
+<p><strong>NOTE: Due to some security settings and limitations by Facebook, conditionals that check to see if the user is logged into Facebook will not work until the user has made some kind of interaction (to generate a valid security token to Facebook) with the Facebook Connect add-on on your site.</strong></p>
+
+<pre class="brush: html;">&lt;h3&gt;Facebook / ExpressionEngine Login Status&lt;/h3&gt;
+&lt;ul&gt;
+{exp:fbc:login_status}
+    &lt;li&gt;
+        Logged into ExpressionEngine?
+        {if fbc_logged_into_ee == "y"}Yes{if:else}No{/if}
+    &lt;/li&gt;
+    &lt;li&gt;
+        Logged into Facebook?
+        {if fbc_logged_into_facebook == "y"}Yes{if:else}No{/if}
+    &lt;/li&gt;
+    &lt;li&gt;
+        Logged into Facebook and ExpressionEngine?
+        {if fbc_logged_into_ee == "y" AND fbc_logged_into_facebook == "y"}Yes{if:else}No{/if}
+    &lt;/li&gt;
+    &lt;li&gt;
+        Facebook and ExpressionEngine accounts synced?
+        {if fbc_logged_into_facebook_and_ee == "y"}Yes{if:else}No{/if}
+    &lt;/li&gt;
+{/exp:fbc:login_status}
+&lt;/ul&gt;
+</pre>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

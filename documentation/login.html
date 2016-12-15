@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Login | Fbc | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Fbc</a></li>
+						<li>Login</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><h3>Setup</h3>
+
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="updates.html">Updates</a></li>
+</ul></li>
+<li><h3>Getting Started</h3>
+
+<ul>
+<li><a href="control-panel.html">Control Panel</a></li>
+<li><a href="creating-a-facebook-app.html">Creating a Facebook App</a></li>
+<li><a href="overview-important-notes.html">Overview &amp; Important Notes</a></li>
+<li><a href="behind-the-scenes.html">Behind the Scenes</a></li>
+<li><a href="publishing-to-facebook.html">Publishing to Facebook</a></li>
+</ul></li>
+<li><h3>Templating</h3>
+
+<ul>
+<li><a href="account-sync-form.html">Account Sync Form</a></li>
+<li><a href="fb-comments-box.html">FB Comments Box</a></li>
+<li><a href="fb-like-button.html">FB Like Button</a></li>
+<li class="current"><a href="login.html">Login</a></li>
+<li><a href="login-status.html">Login Status</a></li>
+<li><a href="member-data.html">Member Data</a></li>
+<li><a href="permissions.html">Permissions</a></li>
+<li><a href="prepare-page.html">Prepare Page</a></li>
+<li><a href="set-permissions.html">Set Permissions</a></li>
+</ul></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<h1>FBC:Login template tag</h1>
+
+<p>The <em>FBC:Login</em> tag allows you to display a Facebook login (and logout) button on your page. It shows the appropriate button depending on the current user's FB login state. Additionally, you can set return pages for every scenario possible when logging in/out.</p>
+
+<pre class="brush: html;">{exp:fbc:login} content {/exp:fbc:login}</pre>
+
+<p><img src="images/fbc_docs_login.jpg" alt="" />
+<img src="images/fbc_docs_login_dialogue.jpg" alt="" /></p>
+
+<ul>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#conditionals">Conditionals</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul>
+
+<p><a name="parameters"></a></p>
+
+<h2>Parameters</h2>
+
+<p>The following parameters are available for use:</p>
+
+<ul>
+<li><a href="#login_button_label">login_button_label</a></li>
+<li><a href="#button_size">button_size</a></li>
+<li><a href="#show_faces">show_faces</a></li>
+<li><a href="#max_rows">max_rows</a></li>
+<li><a href="#width">width</a></li>
+<li><a href="#permissions">permissions</a></li>
+<li><a href="#return_when_logged_in">return_when_logged_in</a></li>
+<li><a href="#return_when_logged_out">return_when_logged_out</a></li>
+<li><a href="#return_to_register">return_to_register</a></li>
+<li><a href="#return_for_passive_register">return_for_passive_register</a></li>
+<li><a href="#return_to_confirm_account_sync">return_to_confirm_account_sync</a></li>
+<li><a href="#return_on_failure">return_on_failure</a></li>
+<li><a href="#ignore_ee_login">ignore_ee_login</a></li>
+</ul>
+
+<p><a name="login_button_label"></a></p>
+
+<h3>login_button_label=</h3>
+
+<pre class="brush: html;">login_button_label="Facebook Login"</pre>
+
+<p>Use this parameter to change the text label of the Facebook Login button. For example, you can type in a value of <strong>Login with Facebook</strong> or <strong>Connect with Facebook</strong>. Default is <strong>Log In</strong>.</p>
+
+<p><a name="button_size"></a></p>
+
+<h3>button_size=</h3>
+
+<pre class="brush: html;">button_size="large"</pre>
+
+<p>Use this parameter to change the size of the Facebook Login button. You can only choose from predetermined options from Facebook: <strong>small</strong>, <strong>medium</strong> (default), <strong>large</strong>, or <strong>xlarge</strong>.</p>
+
+<p><a name="show_faces"></a></p>
+
+<h3>show_faces=</h3>
+
+<pre class="brush: html;">show_faces="true"</pre>
+
+<p>This parameter allows you to specify whether to display profile photos of the users' friends below the Login button. Default is <strong>false</strong>.</p>
+
+<p><a name="max_rows"></a></p>
+
+<h3>max_rows=</h3>
+
+<pre class="brush: html;">max_rows="1"</pre>
+
+<p>This parameter controls the total number of rows of friends pictures to add under the Login button. Default is <strong>1</strong> row.</p>
+
+<p><a name="width"></a></p>
+
+<h3>width=</h3>
+
+<pre class="brush: html;">width="400"</pre>
+
+<p>This parameter controls the width (in pixels) of the Login pop-up.</p>
+
+<p><a name="permissions"></a></p>
+
+<h3>permissions=</h3>
+
+<pre class="brush: html;">permissions="public_profile|email|user_friends|publish_actions"</pre>
+
+<p>This parameter allows you to provide a list of permissions (seperate with pipe character) to request from the user while they login. Default permissions requested are: <em>public_profile</em>. Additionally available (without needing any manual review by Facebook) are <em>email</em> and <em>user_friends</em>. These are the main permissions you'll need as well, with the exception of <strong>publish_actions</strong>, which allows your users to publish data from your site onto their Facebook profile.</p>
+
+<p>You can view the full list of permissions in the <a href="https://developers.facebook.com/docs/facebook-login/permissions">Facebook Permissions Documentation</a>. Use the names mentioned in the User permission column.</p>
+
+<p>If you intend on using/requesting any information other than <em>public_profile</em>, <em>email</em> and <em>user_friends</em>, you'll need to obtain permission manually from Facebook. For example, if you wish to allow users to publish content such as EE comments to the users' Facebook profile (<strong>publish_actions</strong>), you'll need to manually request permission from Facebook. You can learn more about <a href="https://developers.facebook.com/docs/facebook-login/review/how-to-submit">How to Submit for Login Review (Facebook Developer Documentation)</a> here.</p>
+
+<p><a name="return_when_logged_in"></a></p>
+
+<h3>return_when_logged_in=</h3>
+
+<pre class="brush: html;">return_when_logged_in="fbc/home"</pre>
+
+<p>FBC attempts to sync a users' Facebook account with the EE account to which they are logged in whenever it can. If someone is logged into an eligible EE member account and they login using the Facebook login button, their accounts will be synced and they will be redirected to this URI. If someone logs into Facebook and an EE account is found that is already synced, they are logged into that EE account and redirected to this URI.</p>
+
+<p><a name="return_when_logged_out"></a></p>
+
+<h3>return_when_logged_out=</h3>
+
+<pre class="brush: html;">return_when_logged_out="fbc/home"</pre>
+
+<p>This is where you specify the return path for when Facebook logout is completed by a user.</p>
+
+<p><a name="return_to_register"></a></p>
+
+<h3>return_to_register=</h3>
+
+<pre class="brush: html;">return_to_register="fbc/register"</pre>
+
+<p>If someone attempts to Facebook login and they are not a logged-in EE user they are redirected to this page. You could use this to display a page that describes the Facebook login/registration process to the user, and then have them click another button to continue to the Register form. This parameter will be ignored if you have the <em>Passive Registrations</em> preference set to <strong>Yes</strong> in the FBC control panel.</p>
+
+<p><a name="return_for_passive_register"></a></p>
+
+<h3>return_for_passive_register=</h3>
+
+<pre class="brush: html;">return_for_passive_register="fbc/home"</pre>
+
+<p>If you have the <em>Passive Registrations</em> preference set to <strong>Yes</strong> in the FBC control panel, this parameter lets you control the return page once the user becomes Facebook logged in. Passive Registration means that the user will just see a Facebook prompt to allow your site to connect to their profile, and then FBC will automatically create a dummy regular ExpressionEngine member account and sync the Facebook account to it. If you have the <em>Confirm Account Sync</em> preference is set to <strong>Yes</strong>, it will be ignored if the user is currently not logged into EE and has not yet synced their account with Facebook. The <em>Confirm Account Sync</em> feature is only triggered for users that are logged into EE and have not yet synced their Facebook account.</p>
+
+<p><a name="return_to_confirm_account_sync"></a></p>
+
+<h3>return_to_confirm_account_sync=</h3>
+
+<pre class="brush: html;">return_to_confirm_account_sync="fbc/confirm_sync"</pre>
+
+<p>If you have the <em>Confirm Account Sync</em> preference set to <strong>Yes</strong> in the FBC control panel, this parameter lets you control the return page when a user attempts to Facebook login, and is already logged into ExpressionEngine. If the user is currently not logged into EE and has not yet synced their account with Facebook, and the <em>Passive Registrations</em> preference set to <strong>Yes</strong>, this <em>Confirm Account Sync</em> preference/parameter will be ignored, and the user will have an account passively created for them without any confirmation.</p>
+
+<p><a name="return_on_failure"></a></p>
+
+<h3>return_on_failure=</h3>
+
+<pre class="brush: html;">return_on_failure="fbc/fail"</pre>
+
+<p>When all of the login/register possibilities available in the FB login routine are exhausted and failed, the logging in user is redirected to this URI.</p>
+
+<p><a name="ignore_ee_login"></a></p>
+
+<h3>ignore_ee_login=</h3>
+
+<pre class="brush: html;">ignore_ee_login="yes"</pre>
+
+<p>This parameter ignores a check on whether or not a user visiting your site is logged into your EE site. This is useful if you want to ONLY check if the user visiting your site is logged into Facebook.</p>
+
+<p><a name="variables"></a></p>
+
+<h2>Variables</h2>
+
+<p>The following variables are available for use:</p>
+
+<ul>
+<li><a href="#fbc_login_button">fbc_login_button</a></li>
+<li><a href="#fbc_logout_button">fbc_logout_button</a></li>
+</ul>
+
+<p><a name="fbc_login_button"></a></p>
+
+<h3>fbc_login_button</h3>
+
+<pre class="brush: html;">{fbc_login_button}</pre>
+
+<p>This variable parses as a Facebook Login button.</p>
+
+<p><a name="fbc_logout_button"></a></p>
+
+<h3>fbc_logout_button</h3>
+
+<pre class="brush: html;">{fbc_logout_button}</pre>
+
+<p>This variable parses as a Facebook Log Out button if the user is Facebook logged in, or otherwise parses as an empty string. When a user clicks the Log Out button, it will log them out of your site AND Facebook. In many cases, it might just be more courteous to the user to just have them log out of your site using the regular EE logout link method.</p>
+
+<p><a name="conditionals"></a></p>
+
+<h2>Conditionals</h2>
+
+<p>The following conditionals are available for use:</p>
+
+<ul>
+<li><a href="#if_fbc_logged_in">if fbc_logged_in</a></li>
+<li><a href="#if_fbc_logged_out">if fbc_logged_out</a></li>
+</ul>
+
+<p><a name="if_fbc_logged_in"></a></p>
+
+<h3>if fbc_logged_in</h3>
+
+<pre class="brush: html;">{if fbc_logged_in == "y"}{/if}</pre>
+
+<p>This conditional displays its contents if the user is logged into both Facebook and EE <strong>and</strong> both accounts are synced.</p>
+
+<p><a name="if_fbc_logged_out"></a></p>
+
+<h3>if fbc_logged_out</h3>
+
+<pre class="brush: html;">{if fbc_logged_out == "y"}{/if}</pre>
+
+<p>This conditional displays its contents if the user is currently not logged into a synced Facebook and EE account. So for example, this will conditional will evaluate to <strong>y</strong> under the following conditions:</p>
+
+<ul>
+<li>user is logged into just EE.</li>
+<li>user is logged into just Facebook.</li>
+<li>user is logged into both EE and Facebook, <strong>but</strong> the two accounts have not yet ever been synced.</li>
+<li>user is not logged into EE and Facebook.</li>
+</ul>
+
+<p><a name="examples"></a></p>
+
+<h2>Examples</h2>
+
+<p>Below is some example code on how to display a basic login/logout button for users. It will show a Facebook Login button if the user is NOT logged into Facebook and EE (not synced). If they’re logged into Facebook and EE (synced), it displays an EE Log Out link for them to log out of your site (EE) only. You could instead display a Facebook Logout button that lets them log out of both your site (EE) and Facebook, but it seems more courteous to the user to just log out of your site:</p>
+
+<pre class="brush: html;">{exp:fbc:login
+    permissions="public_profile|email|user_friends"
+    return_when_logged_in="site/home"
+    return_when_logged_out="site/home"
+    return_for_passive_register="site/home"
+    return_on_failure="site/fail"
+}
+    {if fbc_logged_out == "y"}
+        {fbc_login_button}
+    {/if}
+    {if fbc_logged_in == "y"}
+        &lt;a href="{path='logout'}"&gt;Log Out&lt;/a&gt;
+    {/if}
+{/exp:fbc:login}
+</pre>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

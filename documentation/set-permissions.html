@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Set Permissions | Fbc | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Fbc</a></li>
+						<li>Set Permissions</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><h3>Setup</h3>
+
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="updates.html">Updates</a></li>
+</ul></li>
+<li><h3>Getting Started</h3>
+
+<ul>
+<li><a href="control-panel.html">Control Panel</a></li>
+<li><a href="creating-a-facebook-app.html">Creating a Facebook App</a></li>
+<li><a href="overview-important-notes.html">Overview &amp; Important Notes</a></li>
+<li><a href="behind-the-scenes.html">Behind the Scenes</a></li>
+<li><a href="publishing-to-facebook.html">Publishing to Facebook</a></li>
+</ul></li>
+<li><h3>Templating</h3>
+
+<ul>
+<li><a href="account-sync-form.html">Account Sync Form</a></li>
+<li><a href="fb-comments-box.html">FB Comments Box</a></li>
+<li><a href="fb-like-button.html">FB Like Button</a></li>
+<li><a href="login.html">Login</a></li>
+<li><a href="login-status.html">Login Status</a></li>
+<li><a href="member-data.html">Member Data</a></li>
+<li><a href="permissions.html">Permissions</a></li>
+<li><a href="prepare-page.html">Prepare Page</a></li>
+<li class="current"><a href="set-permissions.html">Set Permissions</a></li>
+</ul></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<h1>FBC:Set_Permissions template tag</h1>
+
+<p>You can request as many permissions as you wish (that have been approved by Facebook) during the <a href="login.html">Login</a> process, but in order to have your site make additional communications (such as publishing content from your site to the users' Facebook profiles, obtaining email addresses, etc) with Facebook, your users must manually grant permissions for your site.</p>
+
+<p>The <em>Set_Permissions</em> tag allows to you create a button that lets your users do so. When clicked, it opens an Facebook dialogue box that prompts the current Facebook logged in user to allow the current site extended permissions.</p>
+
+<p>Any permissions that have already been granted will be ignored in the process. If all of the permissions tied to this button have been granted for a given user, when the user clicks the button it will not load the modal window again (until there's a new permission to grant).</p>
+
+<pre class="brush: html;">{exp:fbc:set_permissions}</pre>
+
+<p><img src="images/fbc_docs_set_permissions.jpg" alt="" />
+<img src="images/fbc_docs_set_permissions_dialogue.jpg" alt="" /></p>
+
+<ul>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul>
+
+<p><a name="parameters"></a></p>
+
+<h2>Parameters</h2>
+
+<p>The following parameters are available for use:</p>
+
+<ul>
+<li><a href="#button_label">button_label</a></li>
+<li><a href="#button_size">button_size</a></li>
+<li><a href="#permissions">permissions</a></li>
+</ul>
+
+<p><a name="button_label"></a></p>
+
+<h3>button_label=</h3>
+
+<pre class="brush: html;">button_label="Set Facebook Permissions"</pre>
+
+<p>You can change the text label for the Facebook-style Permissions button with this parameter. The <em>Set_Permissions</em> template tag really just extends the <a href="login.html">Login</a> tag, so the default value will be <strong>Log In</strong> if you don't specify a custom button label.</p>
+
+<p><a name="button_size"></a></p>
+
+<h3>button_size=</h3>
+
+<pre class="brush: html;">button_size="medium"</pre>
+
+<p>This parameter allows you to change the size of the button. You can only choose from predetermined options from Facebook: <strong>small</strong>, <strong>medium</strong>, <strong>large</strong>, or <strong>xlarge</strong>.</p>
+
+<p><a name="permissions"></a></p>
+
+<h3>permissions=</h3>
+
+<pre class="brush: html;">permissions="public_profile|email|user_friends|publish_actions"</pre>
+
+<p>This parameter allows you to provide a list of permissions (seperate with pipe character) to request from the user. Default permissions requested are: <em>public_profile</em>. Additionally available (without needing any manual review by Facebook) are <em>email</em> and <em>user_friends</em>. These are the main permissions you'll need as well, with the exception of <strong>publish_actions</strong>, which allows your users to publish data from your site onto their Facebook profile.</p>
+
+<p>You can view the full list of permissions in the <a href="https://developers.facebook.com/docs/facebook-login/permissions">Facebook Permissions Documentation</a>. Use the names mentioned in the User permission column.</p>
+
+<p>If you intend on using/requesting any information other than <em>public_profile</em>, <em>email</em> and <em>user_friends</em>, you'll need to obtain permission manually from Facebook. For example, if you wish to allow users to publish content such as EE comments to the users' Facebook profile (<strong>publish_actions</strong>), you'll need to manually request permission from Facebook. You can learn more about <a href="https://developers.facebook.com/docs/facebook-login/review/how-to-submit">How to Submit for Login Review (Facebook Developer Documentation)</a> here.</p>
+
+<p><a name="examples"></a></p>
+
+<h2>Examples</h2>
+
+<p>Below is an example of how you would display a Facebook-style button in your template that allows a Facebook logged in user to allow more permissions to your site (will display as a button):</p>
+
+<pre class="brush: html;">{exp:fbc:set_permissions
+    button_label="Set Facebook Permissions"
+    button_size="medium"
+    permissions="public_profile|email|user_friends|publish_actions"
+}
+</pre>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

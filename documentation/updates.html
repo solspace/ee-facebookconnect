@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Updates | Fbc | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Fbc</a></li>
+						<li>Updates</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><h3>Setup</h3>
+
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li class="current"><a href="updates.html">Updates</a></li>
+</ul></li>
+<li><h3>Getting Started</h3>
+
+<ul>
+<li><a href="control-panel.html">Control Panel</a></li>
+<li><a href="creating-a-facebook-app.html">Creating a Facebook App</a></li>
+<li><a href="overview-important-notes.html">Overview &amp; Important Notes</a></li>
+<li><a href="behind-the-scenes.html">Behind the Scenes</a></li>
+<li><a href="publishing-to-facebook.html">Publishing to Facebook</a></li>
+</ul></li>
+<li><h3>Templating</h3>
+
+<ul>
+<li><a href="account-sync-form.html">Account Sync Form</a></li>
+<li><a href="fb-comments-box.html">FB Comments Box</a></li>
+<li><a href="fb-like-button.html">FB Like Button</a></li>
+<li><a href="login.html">Login</a></li>
+<li><a href="login-status.html">Login Status</a></li>
+<li><a href="member-data.html">Member Data</a></li>
+<li><a href="permissions.html">Permissions</a></li>
+<li><a href="prepare-page.html">Prepare Page</a></li>
+<li><a href="set-permissions.html">Set Permissions</a></li>
+</ul></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<h1>Updates</h1>
+
+<h2>Updating Instructions <a href="#update" id="update" class="docs-anchor">#</a></h2>
+
+<p>If you're upgrading from Facebook Connect 3.x on ExpressionEngine 2.x, it's recommended that you upload the new Facebook Connect files to your new ExpressionEngine 3.x site directory just before running the EE2 -> EE3 upgrade. Proceed with the following instructions...</p>
+
+<ol>
+<li>Within your sites <strong>./system/user/addons/</strong> directory, delete the <em>fbc</em> folder and upload the new one from the <strong>/system/user/addons/</strong> directory in your download package.</li>
+<li>Within your sites <strong>./themes/user/</strong> directory, delete the <em>fbc</em> folder and upload the new one from the <strong>/themes/user/</strong> directory in your download package.</li>
+<li>Go to the Add-On Manager area in the ExpressionEngine control panel, scroll to down to the <strong>Third Party Add-Ons</strong> section, and find <em>Facebook Connect</em> in the list, and click <strong>Update</strong>.</li>
+</ol>
+
+<h2>Changelog <a href="#changelog" id="changelog" class="docs-anchor">#</a></h2>
+
+<h3>4.0.4 (August 17, 2016) <a href="#v4-0-4" id="v4-0-4" class="docs-anchor">#</a></h3>
+
+<ul>
+<li>Fixed a bug where Facebook Connect would not install on Windows based machines.</li>
+</ul>
+
+<h3>4.0.3 (June 22, 2016) <a href="#v4-0-3" id="v4-0-3" class="docs-anchor">#</a></h3>
+
+<ul>
+<li>Updated for compatibility with ExpressionEngine 3.4.</li>
+</ul>
+
+<h3>4.0.2 (April 29, 2016) <a href="#v4-0-2" id="v4-0-2" class="docs-anchor">#</a></h3>
+
+<ul>
+<li>Added support for PHP7.</li>
+</ul>
+
+<h3>4.0.1 (April 18, 2016) <a href="#v4-0-1" id="v4-0-1" class="docs-anchor">#</a></h3>
+
+<ul>
+<li>Updated Facebook Connect for compatibility with ExpressionEngine 3.3's new icon set in the control panel.</li>
+</ul>
+
+<h3>4.0.0 (February 19, 2016) <a href="#v4-0-0" id="v4-0-0" class="docs-anchor">#</a></h3>
+
+<ul>
+<li>Updated Facebook Connect to be compatible with ExpressionEngine 3+ (only). Facebook Connect 3.x is required for ExpressionEngine 2.x.</li>
+<li>Updated Facebook Connect to use the latest Facebook 2.5 API.</li>
+<li>Discontinued <em>FB Activity Feed plugin</em> per Facebook (discontinued on their end).</li>
+<li>Fixed a possible issue with setting session expiration.</li>
+</ul>
+
+<h3>3.0.0 (March 20, 2015) <a href="#v3-0-0" id="v3-0-0" class="docs-anchor">#</a></h3>
+
+<ul>
+<li>Updated Facebook Connect to use the latest Facebook 2.2 API.</li>
+<li>Updated and refreshed demo templates.</li>
+<li>Updated <a href="member-data.html">Member_Data</a> template tag to conform to new Facebook 2.2 API standards.</li>
+<li>Updated <a href="login.html">Login</a> and <a href="set-permissions.html">Set Permissions</a> template tags to conform to new Facebook 2.2 API permission standards. Facebook now requires many permissions (including publish stream/actions) to be manually <a href="https://developers.facebook.com/docs/apps/review/login#submitlogin">applied for and reviewed</a> by Facebook.</li>
+<li>Updated control panel pages to be cleaner.</li>
+<li>Updated 'profile_pic_size' parameter in <a href="member-data.html">Member_Data</a> to be named 'profile_pic_type', per Facebook's updated naming.</li>
+<li>Fixed a bug where the 'fbc_passive_register_end' hook passed $member_id which wasn't set properly.</li>
+<li>Fixed a bug where the <a href="permissions.html">Permissions</a> template tag was not always displaying accurate information.</li>
+<li>Fixed a bug where the <a href="login-status.html">Login_Status</a> template tag was not always displaying accurate information.</li>
+<li>Discontinued <a href="fb_registration.html">FB Registration plugin</a> per Facebook (discontinued on their end). If you were using this, use <a href="login.html">Facebook Login</a> approach instead.</li>
+<li>Removed logout_button_label= parameter in <a href="login.html">Login</a> tag as Facebook no longer allows for adjusting of the 'Log Out' label.</li>
+<li>Removed the refresh_page="no" parameter from the <a href="set-permissions.html">Set_Permissions</a> tag.</li>
+</ul>
+
+<h3>2.1.4 (April 25, 2014) <a href="#v2-1-4" id="v2-1-4" class="docs-anchor">#</a></h3>
+
+<ul>
+<li>Updated for compatibility with ExpressionEngine 2.8.</li>
+<li>Fixed a bug where submitting a Rating comment to Facebook would send a default text instead of what is in the "fbc_rating_comment_format" field.</li>
+</ul>
+
+<h3>2.1.3 (October 9, 2013) <a href="#v2-1-3" id="v2-1-3" class="docs-anchor">#</a></h3>
+
+<ul>
+<li>Updated for compatibility with ExpressionEngine 2.7.</li>
+</ul>
+
+<h3>2.1.2 (May 9, 2013) <a href="#v2-1-2" id="v2-1-2" class="docs-anchor">#</a></h3>
+
+<ul>
+<li>Updated for compatibility with ExpressionEngine 2.6.</li>
+<li>Fixed a bug where PHP errors would occur in the control panel on PHP 5.2.x.</li>
+<li>Fixed a bug where the language parameter in FBC:Prepare_Page tag would not work.</li>
+<li>Fixed a bug where when Passive registration was set to OFF, using the FBC:Register tag would display a "You are not authorized to access this website" error.</li>
+</ul>
+
+<h3>2.1.1 (March 12, 2013) <a href="#v2-1-1" id="v2-1-1" class="docs-anchor">#</a></h3>
+
+<ul>
+<li>Added internal Demo Templates tab in control panel (replaces older "code pack" approach).</li>
+<li>Updates are now automatic and no longer require a manual update screen.</li>
+<li>Fixed a bug where a missing Facebook App ID in the control panel could trigger a PHP error on the front end rather than just skipping over the functionality.</li>
+</ul>
+
+<h3>2.1.0 (February 9, 2013) <a href="#v2-1-0" id="v2-1-0" class="docs-anchor">#</a></h3>
+
+<ul>
+<li>Removed support for ExpressionEngine 1.x (Facebook Connect is now EE2 only).</li>
+<li>Added offline documentation files to download package.</li>
+<li>Fixed a bug where MySQL errors could occur in front end templates in EE 2.5.4+.</li>
+<li>Fixed bugs where some MySQL queries were not MySQL strict mode compliant.</li>
+<li>Fixed the default theme folder URL as it was defaulting to legacy locations.</li>
+</ul>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Creating a Facebook App | Fbc | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Fbc</a></li>
+						<li>Creating a Facebook App</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><h3>Setup</h3>
+
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="updates.html">Updates</a></li>
+</ul></li>
+<li><h3>Getting Started</h3>
+
+<ul>
+<li><a href="control-panel.html">Control Panel</a></li>
+<li class="current"><a href="creating-a-facebook-app.html">Creating a Facebook App</a></li>
+<li><a href="overview-important-notes.html">Overview &amp; Important Notes</a></li>
+<li><a href="behind-the-scenes.html">Behind the Scenes</a></li>
+<li><a href="publishing-to-facebook.html">Publishing to Facebook</a></li>
+</ul></li>
+<li><h3>Templating</h3>
+
+<ul>
+<li><a href="account-sync-form.html">Account Sync Form</a></li>
+<li><a href="fb-comments-box.html">FB Comments Box</a></li>
+<li><a href="fb-like-button.html">FB Like Button</a></li>
+<li><a href="login.html">Login</a></li>
+<li><a href="login-status.html">Login Status</a></li>
+<li><a href="member-data.html">Member Data</a></li>
+<li><a href="permissions.html">Permissions</a></li>
+<li><a href="prepare-page.html">Prepare Page</a></li>
+<li><a href="set-permissions.html">Set Permissions</a></li>
+</ul></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<h1>Creating a Facebook App</h1>
+
+<p>In order to use the Facebook Connect module (FBC), you'll need to create a Facebook App on the Facebook site. The app will allow your site and Facebook to connect to each other. Facebook adjusts/changes their setup process very often, so this guide may not be exact.</p>
+
+<ol>
+<li>Login to Facebook with your usual Facebook account. Then <a href="https://developers.facebook.com/apps">create a Facebook App for your site on Facebook</a>.</li>
+<li>Click on the <em>Add a New App</em> button.</li>
+<li>You'll be presented with a window that will ask you what kind of app you'd like to create. Select <strong>Website</strong> from the list.</li>
+<li>You'll then be taken to a new page that asks you to choose an existing App or type the name of a new one you'd like to create. At the top right area of the page, just click on <strong>Skip and Create App ID</strong> button.</li>
+<li>In the window that pops up, fill out the form and click <em>Create App ID</em> button.
+<a href="images/fbc-app_create-1.png"><img src="images/fbc-app_create-1.png" alt="" /></a></li>
+<li>Facebook will likely load a CAPTCHA for you to solve. Then click <em>Continue</em>.</li>
+<li>You'll then be presented with an overview of your app. Click the <strong>Settings</strong> button on the navigation menu at the left.</li>
+<li>On the <strong>Settings</strong> page, fill out the form as necessary. For the <em>App Domains</em> field, enter the domain(s) you will be using FBC on.</li>
+<li>Click the <strong>+ Add Platform</strong> button and select <em>Website</em> from the options. Fill out the <em>Site URL</em> fields with the site address you intend on using Facebook Connect on. Then click <em>Save Changes</em> button.
+<a href="images/fbc-app_create-2.png"><img src="images/fbc-app_create-2.png" alt="" /></a></li>
+<li>Click the <strong>App Review</strong> button on the navigation menu on the left.</li>
+<li>On the <strong>App Review</strong> page, it gives you options to submit permission items for review. If you intend on using/requesting any information other than basic profile info, the users' email address and friends list, you'll need to work through this form. For example, if you wish to allow users to publish content such as EE comments to the users' Facebook profile (<strong>publish_actions</strong>), then you'll need to request permission from Facebook here. <strong>This is also the page where you can set your app to LIVE.</strong>
+<a href="images/fbc-app_create-3.png"><img src="images/fbc-app_create-3.png" alt="" /></a></li>
+<li>Once you're done (or if you do not need to request any additional permissions), at the top of the page, click on the large radio option to make your app live.</li>
+<li>Go back to the main page by clicking the <strong>Dashboard</strong> button on the navigation menu on the left.</li>
+<li>Ensure that the status of the app is live (should see a green <em>live</em> circle).</li>
+<li>Take note of the <strong>App ID</strong> and <strong>App Secret</strong> code that Facebook has generated for you, as they need to be entered into your Preferences tab of the FBC control panel area. Leave this page open while you go to your EE control panel.
+<a href="images/fbc-app_create-4.png"><img src="images/fbc-app_create-4.png" alt="" /></a></li>
+<li>In your ExpressionEngine control panel, go to the Preferences tab in the Facebook Connect module CP area:
+
+<ul>
+<li>copy the <strong>App ID</strong> value into the <em>Facebook App ID</em> field.</li>
+<li>copy the <strong>App Secret</strong> value into the <em>Facebook App Secret</em> field.</li>
+</ul></li>
+<li>The rest of the settings for the Facebook app (on the Facebook page) are not important to the Facebook Connect module, but you can fill out some of them if you wish.</li>
+</ol>
+
+<p>You're finally done!</p>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

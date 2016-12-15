@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Prepare Page | Fbc | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Fbc</a></li>
+						<li>Prepare Page</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><h3>Setup</h3>
+
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="updates.html">Updates</a></li>
+</ul></li>
+<li><h3>Getting Started</h3>
+
+<ul>
+<li><a href="control-panel.html">Control Panel</a></li>
+<li><a href="creating-a-facebook-app.html">Creating a Facebook App</a></li>
+<li><a href="overview-important-notes.html">Overview &amp; Important Notes</a></li>
+<li><a href="behind-the-scenes.html">Behind the Scenes</a></li>
+<li><a href="publishing-to-facebook.html">Publishing to Facebook</a></li>
+</ul></li>
+<li><h3>Templating</h3>
+
+<ul>
+<li><a href="account-sync-form.html">Account Sync Form</a></li>
+<li><a href="fb-comments-box.html">FB Comments Box</a></li>
+<li><a href="fb-like-button.html">FB Like Button</a></li>
+<li><a href="login.html">Login</a></li>
+<li><a href="login-status.html">Login Status</a></li>
+<li><a href="member-data.html">Member Data</a></li>
+<li><a href="permissions.html">Permissions</a></li>
+<li class="current"><a href="prepare-page.html">Prepare Page</a></li>
+<li><a href="set-permissions.html">Set Permissions</a></li>
+</ul></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<h1>FBC:Prepare_Page template tag</h1>
+
+<p>In order to display and run any Facebook features like the <em>Login</em> button, <em>Like</em> button, etc, you need to make a couple modifications to your template code. It's required that you add some javascript code just above the <strong>&lt;/body&#62;</strong> tag.</p>
+
+<p>While this can be done manually, the <em>Prepare_Page</em> function does this work for you. The <em>Prepare_Page</em> tag is only doing simple string replacements on your templates, so the performance impact is very minimal. This tag is only needed on pages where you will invoke Facebook Connect functionality. If you prefer to do this manually, you can refer to the <a href="https://developers.facebook.com/docs/javascript/quickstart/v2.5">Facebook Documentation</a>.</p>
+
+<pre class="brush: html;">&lt;script&gt;
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : 'your-app-id',
+            xfbml      : true,
+            version    : 'v2.5'
+        });
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+&lt;/script&gt;
+</pre>
+
+<p>The <em>Prepare_Page</em> tag needs to be in the exact template that contains the <strong>&lt;/body&#62;</strong> tag. If you use a template embed for your footer, you'll need to place the <em>Prepare_Page</em> tag at the top of that embedded template instead.</p>
+
+<pre class="brush: html;">{exp:fbc:prepare_page}</pre>
+
+<ul>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul>
+
+<p><a name="parameters"></a></p>
+
+<h2>Parameters</h2>
+
+<p>The following parameters are available for use:</p>
+
+<ul>
+<li><a href="#execute">execute</a></li>
+<li><a href="#language">language</a></li>
+</ul>
+
+<p><a name="execute"></a></p>
+
+<h3>execute= (optional)</h3>
+
+<pre class="brush: html;">execute="yes"</pre>
+
+<p>This parameter is an additional feature that allows you to prevent the <em>Prepare_Page</em> function from executing. Most sites usually place their footer code into an embedded template. Because of the parsing order in EE, <em>Prepare_Page</em> will execute prior to embedded conditionals. When you pass a value of <strong>yes</strong> to the <em>execute</em> parameter, the method will execute and do its job. If you pass any other value, including an empty string, the method will NOT execute. If there is no <em>execute</em> parameter provided, the <em>Prepare_Page</em> method will execute. The idea here is that you might have some pages that you don't want the <em>Prepare_Page</em> function to run on, and this is a way to stop it from doing so.</p>
+
+<p><a name="language"></a></p>
+
+<h3>language=</h3>
+
+<pre class="brush: html;">language="en_US"</pre>
+
+<p>Use this parameter to change the language preference for all Facebook items. Default is US English (<strong>en_US</strong>). Facebook locales follow <a href="http://www.loc.gov/standards/iso639-2/php/code_list.php">ISO language</a> and <a href="https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes">country codes</a> respectively, concatenated by an underscore. The basic format is <em>ll_CC</em>, where <strong>ll</strong> is a two-letter language code (in lowercase), and <strong>CC</strong> is a two-letter country code (in uppercase). For instance, <em>en_US</em> represents <strong>US English</strong>. For more information about Facebook and internationalization, visit the <a href="https://developers.facebook.com/docs/internationalization">Facebook Developer Docs</a>.</p>
+
+<p><a name="examples"></a></p>
+
+<h2>Examples</h2>
+
+<p><a name="simple"></a></p>
+
+<h3>Simple</h3>
+
+<p>Below is some example code on how to implement the <em>Prepare_Page</em> tag in a simple template that contains the <strong>&lt;/body&#62;</strong> tag:</p>
+
+<pre class="brush: html;">{exp:fbc:prepare_page}
+
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;The title of your page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;The title of your page&lt;/h1&gt;
+    &lt;p&gt;Here is some babble...&lt;/p&gt;
+
+    &lt;div class="footer"&gt;
+        &lt;p&gt;&amp;copy; Copyright {current_time format="%Y"} Your Site.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<p><a name="embedded"></a></p>
+
+<h3>Embedded</h3>
+
+<p>Below is some example code on how to implement the <em>Prepare_Page</em> tag in the instance your <strong>&lt;/body&#62;</strong> tag is located in an embedded template:</p>
+
+<p><strong>Main Template:</strong></p>
+
+<pre class="brush: html;">{embed="path_to/header"}
+
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;The title of your page&lt;/h1&gt;
+    &lt;p&gt;Here is some babble...&lt;/p&gt;
+
+{embed="path_to/footer"}
+</pre>
+
+<p><strong>Footer Embed Template:</strong></p>
+
+<pre class="brush: html;">{exp:fbc:prepare_page}
+
+    &lt;div class="footer"&gt;
+        &lt;p&gt;&amp;copy; Copyright {current_time format="%Y"} Your Site.&lt;/p&gt;
+    &lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<p><a name="advanced_embedded"></a></p>
+
+<h3>Advanced Embedded (with <em>execute</em> parameter)</h3>
+
+<p>Below is some example code on how to implement the <em>Prepare_Page</em> tag in the instance your <strong>&lt;/body&#62;</strong> tag is located in an embedded template along with the <a href="#execute">execute</a> parameter (where <em>load_fbc</em> is just a random name chosen for this example, and can be whatever you want to call it):</p>
+
+<p><strong>Main Template:</strong></p>
+
+<pre class="brush: html;">{embed="path_to/header"}
+
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;The title of your page&lt;/h1&gt;
+    &lt;p&gt;Here is some babble...&lt;/p&gt;
+
+{embed="path_to/footer" load_fbc="yes"}
+</pre>
+
+<p><strong>Footer Embed Template:</strong></p>
+
+<pre class="brush: html;">{exp:fbc:prepare_page execute="{embed:load_fbc}"}
+
+    &lt;div class="footer"&gt;
+        &lt;p&gt;&amp;copy; Copyright {current_time format="%Y"} Your Site.&lt;/p&gt;
+    &lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

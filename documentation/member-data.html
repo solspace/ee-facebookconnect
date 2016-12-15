@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Member Data | Fbc | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Fbc</a></li>
+						<li>Member Data</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><h3>Setup</h3>
+
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="updates.html">Updates</a></li>
+</ul></li>
+<li><h3>Getting Started</h3>
+
+<ul>
+<li><a href="control-panel.html">Control Panel</a></li>
+<li><a href="creating-a-facebook-app.html">Creating a Facebook App</a></li>
+<li><a href="overview-important-notes.html">Overview &amp; Important Notes</a></li>
+<li><a href="behind-the-scenes.html">Behind the Scenes</a></li>
+<li><a href="publishing-to-facebook.html">Publishing to Facebook</a></li>
+</ul></li>
+<li><h3>Templating</h3>
+
+<ul>
+<li><a href="account-sync-form.html">Account Sync Form</a></li>
+<li><a href="fb-comments-box.html">FB Comments Box</a></li>
+<li><a href="fb-like-button.html">FB Like Button</a></li>
+<li><a href="login.html">Login</a></li>
+<li><a href="login-status.html">Login Status</a></li>
+<li class="current"><a href="member-data.html">Member Data</a></li>
+<li><a href="permissions.html">Permissions</a></li>
+<li><a href="prepare-page.html">Prepare Page</a></li>
+<li><a href="set-permissions.html">Set Permissions</a></li>
+</ul></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<h1>FBC:Member_Data template tag</h1>
+
+<p>The <em>FBC:Member_Data</em> tag allows you to display Facebook profile data for a given member. You can use conditionals to handle the display in your templates (whether or not you want Facebook data to show for some fields or users, and/or other EE member data for other fields or users). Essentially, there might be times when you need to display mixed member data content in the event you have a mix of some regular EE members and some Facebook members, when displaying things like Comment Entries, etc.</p>
+
+<pre class="brush: html;">{exp:fbc:member_data} content {/exp:fbc:member_data} </pre>
+
+<ul>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul>
+
+<p><a name="parameters"></a></p>
+
+<h2>Parameters</h2>
+
+<p>The following parameters are available for use:</p>
+
+<ul>
+<li><a href="#member_id">member_id</a></li>
+<li><a href="#profile_pic_type">profile_pic_type</a></li>
+<li><a href="#profile_pic_height">profile_pic_height</a></li>
+<li><a href="#profile_pic_width">profile_pic_width</a></li>
+</ul>
+
+<p><a name="member_id"></a></p>
+
+<h3>member_id=</h3>
+
+<pre class="brush: html;">member_id="{segment_3}"</pre>
+
+<p>This parameter allows you to specify or load details about a given member by specifying their member ID. You can hardcode a member ID, pass it through an embed, grab it from the URI, or specify <strong>CURRENT_USER</strong> to display the profile of the currently logged in user.</p>
+
+<p><a name="profile_pic_type"></a></p>
+
+<h3>profile_pic_type=</h3>
+
+<pre class="brush: html;">profile_pic_type="normal" </pre>
+
+<p>This parameter allows you to control the size of the Facebook profile photo (<strong>{fbc_facebook_profile_pic}</strong> variable) with predetermined Facebook options. Options are <strong>thumb</strong> (default), <strong>small</strong>, <strong>normal</strong>, and <strong>large</strong>.</p>
+
+<p><a name="profile_pic_height"></a></p>
+
+<h3>profile_pic_height=</h3>
+
+<pre class="brush: html;">profile_pic_height="150" </pre>
+
+<p>This parameter allows you to control the height on the sizing of the Facebook profile photo <strong>{fbc_facebook_profile_pic}</strong> variable). Use an integer value, such as <strong>150</strong>. It's best to use this parameter in conjunction with the <a href="#profile_pic_size">profile_pic_size</a> parameter with a value of <em>normal</em>, otherwise it'll stretch out a pixelated small image.</p>
+
+<p><a name="profile_pic_width"></a></p>
+
+<h3>profile_pic_width=</h3>
+
+<pre class="brush: html;">profile_pic_width="150" </pre>
+
+<p>This parameter allows you to control the width on the sizing of the Facebook profile photo (<strong>{fbc_facebook_profile_pic}</strong> variable). Use an integer value, such as <strong>150</strong>. It's best to use this parameter in conjunction with the <a href="#profile_pic_size">profile_pic_size</a> parameter with a value of <em>normal</em>, otherwise it'll stretch out a pixelated small image.</p>
+
+<p><a name="variables"></a></p>
+
+<h2>Variables</h2>
+
+<p>The following variables are available for use:</p>
+
+<ul>
+<li><strong>{fbc_facebook_id}</strong> - The ID of the person's user account. This ID is unique to each app and cannot be used across different apps.</li>
+<li><strong>{fbc_facebook_email}</strong> - The person's primary email address listed on their profile. This field will not be returned if no valid email address is available.</li>
+<li><strong>{fbc_facebook_name}</strong> - The person's full name.</li>
+<li><strong>{fbc_facebook_first_name}</strong> - The person's first name.</li>
+<li><strong>{fbc_facebook_last_name}</strong> - The person's last name.</li>
+<li><strong>{fbc_facebook_link}</strong> - A link to the person's profile.</li>
+<li><strong>{fbc_facebook_locale}</strong> - The person's locale (ex: <em>en_US</em>).</li>
+<li><strong>{fbc_facebook_gender}</strong> - The gender pronoun selected by this person. This is omitted if that pronoun is a custom value.</li>
+<li><strong>{fbc_facebook_timezone}</strong> - The user's current timezone offset from UTC.</li>
+<li><strong>{fbc_facebook_verified}</strong> - Indicates whether the user account has been verified. This is distinct from the is_verified field. Someone is considered verified if they take any of the following actions:
+
+<ul>
+<li>Register for mobile</li>
+<li>Confirm their account via SMS</li>
+<li>Enter a valid credit card</li>
+</ul></li>
+<li><strong>{fbc_facebook_profile_pic}</strong> - This variable will display the full image HTML code with URL path of the profile photo of the user from the Facebook site. Use the <a href="#profile_pic_type">profile_pic_type</a> or <a href="#profile_pic_height">profile_pic_height</a> and <a href="#profile_pic_width">profile_pic_width</a> parameters to control the sizing of this image.</li>
+<li><strong>{fbc_facebook_friends_count}</strong> - This variable displays the total number of Facebook friends the currently logged in user has on your site.</li>
+<li><strong>{fbc_facebook_FIELD_NAME}</strong> - Most Facebook fields should be available for use, as long as you have attempted to collect the necessary permissions, and the user has granted them. The list is far too exhaustive to list here - refer to <a href="https://developers.facebook.com/docs/graph-api/reference/v2.5/user#fields">this page in the Facebook Developer Documentation</a>. To parse any of those fields, prepend the variable names with <em>fbc_facebook&#95;</em>.</li>
+</ul>
+
+<p><strong>gender</strong> &amp; <strong>locale</strong> can only be accessed if:</p>
+
+<ul>
+<li>The person queried is the person using the app.</li>
+<li>The person queried is using the app, and is a friend of the person using the app.</li>
+<li>The person queried is using the app, is not a friend of the person using the app, but the app includes either an app access token or an appsecret_proof argument with the call.</li>
+</ul>
+
+<p><strong>timezone</strong> &amp; <strong>verified</strong> can only be accessed if:</p>
+
+<ul>
+<li>The person queried is equal to the person making the request.</li>
+</ul>
+
+<p>To display any other variables, a manual submission is required on your part to Facebook, and manual review by them to allow you to request that information from your site users. You can learn more about <a href="https://developers.facebook.com/docs/facebook-login/review/how-to-submit">How to Submit for Login Review (Facebook Developer Documentation)</a> here.</p>
+
+<p><a name="examples"></a></p>
+
+<h2>Examples</h2>
+
+<p>Below is some example code on how to display profile information for an FBC-logged in Facebook user:</p>
+
+<pre class="brush: html;">&lt;h4&gt;Facebook Profile&lt;/h4&gt;
+&lt;ul&gt;
+{exp:fbc:member_data
+    member_id="CURRENT_USER"
+}
+    &lt;li&gt;Facebook ID: {fbc_facebook_id}&lt;/li&gt;
+    &lt;li&gt;Facebook Name: {fbc_facebook_name}&lt;/li&gt;
+    &lt;li&gt;Facebook Email: {fbc_facebook_email}&lt;/li&gt;
+    &lt;li&gt;Facebook Profile Pic: {fbc_facebook_profile_pic}&lt;/li&gt;
+    &lt;li&gt;I have {fbc_facebook_friends_count} friends on this site.&lt;/li&gt;
+{/exp:fbc:member_data}
+&lt;/ul&gt;
+</pre>
+
+<p>Below is an example of how to integrate this into your EE Comments area on a single entry view template:</p>
+
+<pre class="brush: html;">{exp:channel:entries require_entry="yes"}
+    &lt;h2&gt;{title}&lt;/h2&gt;
+    &lt;p&gt;{body}&lt;/p&gt;
+{/exp:channel:entries}
+
+{exp:comment:entries}
+
+    {exp:fbc:member_data
+        member_id="{author_id}"
+        profile_pic_type="small"
+    }
+        {if fbc_facebook_profile_pic}
+            {fbc_facebook_profile_pic}
+            &lt;!-- FB profile pic, if user's account is synced to FB --&gt;
+        {if:else}
+            {if avatar}
+                &lt;img src="{avatar_url}" width="{avatar_image_width}" height="{avatar_image_height}" alt="{author}" /&gt;
+                &lt;!-- EE avatar, if user's account is NOT synced to FB --&gt;
+            {/if}
+        {/if}&lt;/p&gt;
+        &lt;p&gt;
+            Posted by:
+            &lt;a href="{path='user/profile'}/{author_id}"&gt;
+            {if fbc_facebook_name}
+                {fbc_facebook_name}
+                &lt;!-- FB full name, if user's account is synced to FB --&gt;
+            {if:else}
+                {author}
+                &lt;!-- EE screen name, if user's account is NOT synced to FB --&gt;
+            {/if}
+            &lt;/a&gt;
+            on {comment_date format="%Y %m %d"}
+        &lt;/p&gt;
+    {/exp:fbc:member_data}
+
+    &lt;p&gt;{comment}&lt;/p&gt;
+
+    {if no_results}
+        &lt;p&gt;No comments for this entry yet.&lt;/p&gt;
+    {/if}
+
+{/exp:comment:entries}
+</pre>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>
