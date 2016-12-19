@@ -7,7 +7,7 @@
 	<head lang="en">
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<title>Permissions | Fbc | Solspace Addon Documentation</title>
+		<title>Set Permissions | Fbc | Solspace Addon Documentation</title>
 		<meta name="description" content="" />
 		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
 		<meta name="viewport" content="width=device-width" />
@@ -32,7 +32,7 @@
 				<div class="bread_crumbs">
 					<ul class="crumbs">
 						<li class="first"><a href="index.html">Fbc</a></li>
-						<li>Permissions</li>
+						<li>Set Permissions</li>
 					</ul>
 				</div>
 			</div>
@@ -59,9 +59,9 @@
 <li><a href="login.html">Login</a></li>
 <li><a href="login_status.html">Login Status</a></li>
 <li><a href="member_data.html">Member Data</a></li>
-<li class="current"><a href="permissions.html">Permissions</a></li>
+<li><a href="permissions.html">Permissions</a></li>
 <li><a href="prepare_page.html">Prepare Page</a></li>
-<li><a href="set_permissions.html">Set Permissions</a></li>
+<li class="current"><a href="set_permissions.html">Set Permissions</a></li>
 </ul></li>
 <li><h3>Requirements</h3><div class="requirements">
 
@@ -75,54 +75,73 @@
 			</nav>
 
 			<article class="docs">
-				<p>Permissions from Facebook site for use on your EE site are granted during <a href="login.html">Login</a> process or <a href="set_permissions.html">Set_Permissions</a> process. This template tag allows you to check which Facebook permissions the logged in user has granted.</p>
+				<p>You can request as many permissions as you wish (that have been approved by Facebook) during the <a href="login.html">Login</a> process, but in order to have your site make additional communications (such as publishing content from your site to the users' Facebook profiles, obtaining email addresses, etc) with Facebook, your users must manually grant permissions for your site.</p>
 
-<p>Facebook allows the following permissions to be request from users without needing manual review by Facebook:</p>
+<p>The <em>Set_Permissions</em> tag allows to you create a button that lets your users do so. When clicked, it opens an Facebook dialogue box that prompts the current Facebook logged in user to allow the current site extended permissions.</p>
+
+<p>Any permissions that have already been granted will be ignored in the process. If all of the permissions tied to this button have been granted for a given user, when the user clicks the button it will not load the modal window again (until there's a new permission to grant).</p>
+
+<pre class="brush: html;">{exp:fbc:set_permissions}</pre>
+
+<p><img src="images/fbc_docs_set_permissions.jpg" alt="" />
+<img src="images/fbc_docs_set_permissions_dialogue.jpg" alt="" /></p>
 
 <ul>
-<li><em>public_profile</em></li>
-<li><em>email</em></li>
-<li><em>user_friends</em></li>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#examples">Examples</a></li>
 </ul>
 
-<p>These are the main permissions you'll need as well, with the exception of <strong>publish_actions</strong>, which allows your users to publish data from your site onto their Facebook profile.</p>
+<p><a name="parameters"></a></p>
+
+<h2>Parameters</h2>
+
+<p>The following parameters are available for use:</p>
+
+<ul>
+<li><a href="#button_label">button_label</a></li>
+<li><a href="#button_size">button_size</a></li>
+<li><a href="#permissions">permissions</a></li>
+</ul>
+
+<p><a name="button_label"></a></p>
+
+<h3>button_label=</h3>
+
+<pre class="brush: html;">button_label="Set Facebook Permissions"</pre>
+
+<p>You can change the text label for the Facebook-style Permissions button with this parameter. The <em>Set_Permissions</em> template tag really just extends the <a href="login.html">Login</a> tag, so the default value will be <strong>Log In</strong> if you don't specify a custom button label.</p>
+
+<p><a name="button_size"></a></p>
+
+<h3>button_size=</h3>
+
+<pre class="brush: html;">button_size="medium"</pre>
+
+<p>This parameter allows you to change the size of the button. You can only choose from predetermined options from Facebook: <strong>small</strong>, <strong>medium</strong>, <strong>large</strong>, or <strong>xlarge</strong>.</p>
+
+<p><a name="permissions"></a></p>
+
+<h3>permissions=</h3>
+
+<pre class="brush: html;">permissions="public_profile|email|user_friends|publish_actions"</pre>
+
+<p>This parameter allows you to provide a list of permissions (seperate with pipe character) to request from the user. Default permissions requested are: <em>public_profile</em>. Additionally available (without needing any manual review by Facebook) are <em>email</em> and <em>user_friends</em>. These are the main permissions you'll need as well, with the exception of <strong>publish_actions</strong>, which allows your users to publish data from your site onto their Facebook profile.</p>
 
 <p>You can view the full list of permissions in the <a href="https://developers.facebook.com/docs/facebook-login/permissions/v2.2">Facebook Permissions Documentation</a>. Use the names mentioned in the User permission column.</p>
 
 <p>If you intend on using/requesting any information other than <em>public_profile</em>, <em>email</em> and <em>user_friends</em>, you'll need to obtain permission manually from Facebook. For example, if you wish to allow users to publish content such as EE comments to the users' Facebook profile (<strong>publish_actions</strong>), you'll need to manually request permission from Facebook. You can learn more about <a href="https://developers.facebook.com/docs/apps/review/login#submitlogin">How to Submit for Login Review (Facebook Developer Documentation)</a> here.</p>
 
-<p>To check against permissions granted, format your conditionals like this, where <strong>PERMISSION_NAME</strong> is the name of the permission in the <a href="https://developers.facebook.com/docs/facebook-login/permissions/v2.2">Facebook Permissions Documentation</a>):</p>
-
-<pre class="brush: html;">{if fbc_allow_PERMISSION_NAME == "y"}{/if}</pre>
-
 <p><a name="examples"></a></p>
 
-<h2>Example</h2>
+<h2>Examples</h2>
 
-<p>Here’s an example of how you would determine some permissions of a
-logged in user:</p>
+<p>Below is an example of how you would display a Facebook-style button in your template that allows a Facebook logged in user to allow more permissions to your site (will display as a button):</p>
 
-<pre class="brush: html;">&lt;h3&gt;Permissions I have granted for {site_name}:&lt;/h3&gt;
-&lt;ul&gt;
-{exp:fbc:permissions}
-    &lt;li&gt;
-        Public Profile?
-        &lt;b&gt;{if fbc_allow_public_profile == "y"}Yes{if:else}No{/if}&lt;/b&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        Email Address?
-        &lt;b&gt;{if fbc_allow_email == "y"}Yes{if:else}No{/if}&lt;/b&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        User Friends List?
-        &lt;b&gt;{if fbc_allow_user_friends == "y"}Yes{if:else}No{/if}&lt;/b&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        Allow Publishing to Facebook?
-        &lt;b&gt;{if fbc_facebook_allow_publish_actions == "y"}Yes{if:else}No{/if}&lt;/b&gt;
-    &lt;/li&gt;
-{/exp:fbc:permissions}
-&lt;/ul&gt;
+<pre class="brush: html;">{exp:fbc:set_permissions
+    button_label="Set Facebook Permissions"
+    button_size="medium"
+    permissions="public_profile|email|user_friends|publish_actions"
+}
 </pre>
 			</article>
 		</div>

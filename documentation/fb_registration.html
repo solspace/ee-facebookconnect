@@ -7,7 +7,7 @@
 	<head lang="en">
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<title>Permissions | Fbc | Solspace Addon Documentation</title>
+		<title>Fb Registration | Fbc | Solspace Addon Documentation</title>
 		<meta name="description" content="" />
 		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
 		<meta name="viewport" content="width=device-width" />
@@ -32,7 +32,7 @@
 				<div class="bread_crumbs">
 					<ul class="crumbs">
 						<li class="first"><a href="index.html">Fbc</a></li>
-						<li>Permissions</li>
+						<li>Fb Registration</li>
 					</ul>
 				</div>
 			</div>
@@ -59,7 +59,7 @@
 <li><a href="login.html">Login</a></li>
 <li><a href="login_status.html">Login Status</a></li>
 <li><a href="member_data.html">Member Data</a></li>
-<li class="current"><a href="permissions.html">Permissions</a></li>
+<li><a href="permissions.html">Permissions</a></li>
 <li><a href="prepare_page.html">Prepare Page</a></li>
 <li><a href="set_permissions.html">Set Permissions</a></li>
 </ul></li>
@@ -75,54 +75,83 @@
 			</nav>
 
 			<article class="docs">
-				<p>Permissions from Facebook site for use on your EE site are granted during <a href="login.html">Login</a> process or <a href="set_permissions.html">Set_Permissions</a> process. This template tag allows you to check which Facebook permissions the logged in user has granted.</p>
+				<hr />
 
-<p>Facebook allows the following permissions to be request from users without needing manual review by Facebook:</p>
+<p><strong>WARNING: The Registration plugin is deprecated and will be removed by Facebook on April 30, 2015. You should not integrate this plugin into new apps. If you're using this plugin, you should replace it with <a href="login.html">Facebook Login</a> before April 30, 2015.</strong></p>
+
+<hr />
+
+<p>You can integrate the Facebook Registration plugin on your site. The Facebook Registration plugin allows users to easily sign up for your website with their Facebook account. When logged into Facebook, users see a form that is pre-filled with their Facebook information where appropriate. User's must be logged into Facebook to use this form. If not, they will see a "Facebook Login" modal window asking them to log into Facebook first (or create a Facebook account).</p>
+
+<p>The registration plugin gives you the flexibility to ask for additional information which is not available through the Facebook API (e.g. favorite movie).</p>
+
+<p>In addition to the username, email, and screen_name fields, the Facebook Registration form pulls all EE custom member fields that are marked as visible in the EE registration form AND set to required. The Facebook Registration form will perform a validation check for those fields upon submission. If your site is set to require an acceptance of terms, that will show as a checkbox. If your site requires captcha, Facebook will run the user through FB's own captcha capability.</p>
+
+<p><strong>NOTE:</strong> Facebook requires the page this form is on to be a secure page, and submitted through HTTPS.</p>
+
+<pre class="brush: html;">{exp:fbc:registration}</pre>
 
 <ul>
-<li><em>public_profile</em></li>
-<li><em>email</em></li>
-<li><em>user_friends</em></li>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#examples">Examples</a></li>
 </ul>
 
-<p>These are the main permissions you'll need as well, with the exception of <strong>publish_actions</strong>, which allows your users to publish data from your site onto their Facebook profile.</p>
+<p><a name="parameters"></a></p>
 
-<p>You can view the full list of permissions in the <a href="https://developers.facebook.com/docs/facebook-login/permissions/v2.2">Facebook Permissions Documentation</a>. Use the names mentioned in the User permission column.</p>
+<h2>Parameters</h2>
 
-<p>If you intend on using/requesting any information other than <em>public_profile</em>, <em>email</em> and <em>user_friends</em>, you'll need to obtain permission manually from Facebook. For example, if you wish to allow users to publish content such as EE comments to the users' Facebook profile (<strong>publish_actions</strong>), you'll need to manually request permission from Facebook. You can learn more about <a href="https://developers.facebook.com/docs/apps/review/login#submitlogin">How to Submit for Login Review (Facebook Developer Documentation)</a> here.</p>
+<p>The following parameters are available for use:</p>
 
-<p>To check against permissions granted, format your conditionals like this, where <strong>PERMISSION_NAME</strong> is the name of the permission in the <a href="https://developers.facebook.com/docs/facebook-login/permissions/v2.2">Facebook Permissions Documentation</a>):</p>
+<ul>
+<li><a href="#return_on_success">return_on_success</a></li>
+<li><a href="#width">width</a></li>
+<li><a href="#border_color">border_color</a></li>
+<li><a href="#show_captcha">show_captcha</a></li>
+</ul>
 
-<pre class="brush: html;">{if fbc_allow_PERMISSION_NAME == "y"}{/if}</pre>
+<p><a name="return_on_success"></a></p>
+
+<h3>return_on_success=</h3>
+
+<pre class="brush: html;">return_on_success="site/page"</pre>
+
+<p>This parameter lets you specify the page the user should be returned upon successful registration.</p>
+
+<p><a name="width"></a></p>
+
+<h3>width=</h3>
+
+<pre class="brush: html;">width="450"</pre>
+
+<p>This parameter allows you to set the width (in pixels) of the Registration form.</p>
+
+<p><a name="border_color"></a></p>
+
+<h3>border_color=</h3>
+
+<pre class="brush: html;">border_color="000000"</pre>
+
+<p>This parameter allows you to set the border color of the Registration form.</p>
+
+<p><a name="show_captcha"></a></p>
+
+<h3>show_captcha=</h3>
+
+<pre class="brush: html;">show_captcha="no"</pre>
+
+<p>This parameter allows you to override EE settings for Membership Captcha. If this parameter is specified, the Registration tag will respect the setting of <strong>yes</strong> or <strong>no</strong> and will completely ignore EE settings.</p>
 
 <p><a name="examples"></a></p>
 
-<h2>Example</h2>
+<h2>Examples</h2>
 
-<p>Here’s an example of how you would determine some permissions of a
-logged in user:</p>
+<p>Below is some example code on how to display the Facebook Registration form on your site:</p>
 
-<pre class="brush: html;">&lt;h3&gt;Permissions I have granted for {site_name}:&lt;/h3&gt;
-&lt;ul&gt;
-{exp:fbc:permissions}
-    &lt;li&gt;
-        Public Profile?
-        &lt;b&gt;{if fbc_allow_public_profile == "y"}Yes{if:else}No{/if}&lt;/b&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        Email Address?
-        &lt;b&gt;{if fbc_allow_email == "y"}Yes{if:else}No{/if}&lt;/b&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        User Friends List?
-        &lt;b&gt;{if fbc_allow_user_friends == "y"}Yes{if:else}No{/if}&lt;/b&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        Allow Publishing to Facebook?
-        &lt;b&gt;{if fbc_facebook_allow_publish_actions == "y"}Yes{if:else}No{/if}&lt;/b&gt;
-    &lt;/li&gt;
-{/exp:fbc:permissions}
-&lt;/ul&gt;
+<pre class="brush: html;">&lt;h2&gt;Registration&lt;/h2&gt;
+{exp:fbc:registration
+    return_on_success="site/page"
+    width="800"
+}
 </pre>
 			</article>
 		</div>

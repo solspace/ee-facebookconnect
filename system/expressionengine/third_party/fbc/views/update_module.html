@@ -1,0 +1,29 @@
+<?php echo $this->view('header.html');?>
+
+<div class="clear_left"></div>
+
+<div class="pageContents">
+
+	<form action='<?php echo $form_url;?>' method='post'>
+
+		<h3 class="alertHeadingCenter"><?php echo lang('update_fbc_module');?></h3>
+		<div>
+			<input type="hidden" name="<?=$csrf_hidden_name?>"	value="<?=$CSRF_TOKEN?>" />
+			<input type="hidden" name="run_update" value="y" />
+		</div>
+
+		<div class='box' >
+
+			<p><strong><?php echo lang('fbc_update_message'); ?></strong></p>
+
+			<p>
+				<input  type='submit' class='submit' value='<?php echo lang('update');?>'  />
+			</p>
+
+		</div>
+
+	</form>
+
+</div>
+
+<?php echo $this->view('footer.html'); ?>

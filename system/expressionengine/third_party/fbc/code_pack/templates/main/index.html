@@ -1,0 +1,169 @@
+{embed="%prefix%inc/index" page_title="Home"}
+	</head>
+
+	<body role="document">
+
+{embed="%prefix%inc/header"}
+
+		<div class="container" style="margin-top:30px;">
+
+			<div class="page-header">
+				<h1>My Profile</h1>
+				<p class="lead">This page displays EE (if logged into EE) and Facebook (if synced to Facebook) member data for the currently logged in user.</p>
+			</div>
+
+			<div class="row">
+				<div class="col-md-8">
+				{if segment_3 == "registered"}
+					<div class="alert alert-success" role="alert">
+						<p class="lead">Your registration was successful!</p>
+					</div>
+				{/if}
+				{if segment_3 == "logged_in"}
+					<div class="alert alert-success" role="alert">
+						<p class="lead">You have now successfully logged in through Facebook!</p>
+					</div>
+				{/if}
+				{if segment_3 == "logged_out"}
+					<div class="alert alert-success" role="alert">
+						<p class="lead">You have now successfully logged out!</p>
+					</div>
+				{/if}
+				{if segment_3 == "unsynced"}
+					<div class="alert alert-success" role="alert">
+						<p class="lead">You have now successfully unsynced your Facebook and EE accounts.</p>
+					</div>
+				{/if}
+				{if segment_3 == "fail"}
+					<div class="alert alert-danger" role="alert">
+						<p class="lead">An error has occurred!</p>
+					</div>
+				{/if}
+
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">Facebook Profile</h3>
+						</div>
+						<div class="panel-body">
+							{exp:fbc:member_data
+								member_id="CURRENT_USER"
+								profile_pic_type="large"
+								profile_pic_width="160"
+								profile_pic_height="160"
+							}
+							{if fbc_facebook_id}
+							<div class="row">
+								<div class="col-md-4 col-lg-3">
+									{fbc_facebook_profile_pic}
+									<a href="{path='%prefix%main/unsync'}" class="btn btn-xs btn-default" style="margin-top:20px;">Unsync account?</a>
+								</div>
+								<div class="col-md-8 col-lg-9">
+									<h3>
+										{fbc_facebook_name} &nbsp; &nbsp;
+										{if fbc_facebook_gender == 'male'}
+											<small style="color: #0084ea;"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Male</small>
+										{/if}
+										{if fbc_facebook_gender == 'female'}
+											<small style="color: #ff65b5;"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Female</small>
+										{/if}
+									</h3>
+									<p>{fbc_facebook_friends_count} Facebook friends on this site</p>
+									<table class="table table-hover">
+										<tbody>
+											<tr>
+												<th scope="row" style="width: 30%; border-top: 0;">User ID</th>
+												<td style="width: 70%; border-top: 0;">{fbc_facebook_id}</td>
+											</tr>
+											<tr>
+												<th scope="row">Link</th>
+												<td><a href="{fbc_facebook_link}">{fbc_facebook_link}</a></td>
+											</tr>
+											<tr>
+												<th scope="row">Email</th>
+												<td>{if fbc_facebook_email}<a href="mailto:{fbc_facebook_email}">{fbc_facebook_email}</a>{if:else}Permission has not been granted yet{/if}</td>
+											</tr>
+											<tr>
+												<th scope="row">Name</th>
+												<td>{fbc_facebook_first_name} (first) / {fbc_facebook_last_name} (last)</td>
+											</tr>
+											<tr>
+												<th scope="row">Locale</th>
+												<td>{fbc_facebook_locale}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							{if:else}
+								<p>You have not synced your EE and Facebook accounts yet.</p>
+							{/if}
+							{/exp:fbc:member_data}
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">ExpressionEngine Member Profile</h3>
+						</div>
+						<div class="panel-body">
+							{if logged_in}
+							{exp:member:custom_profile_data}
+							<div class="row">
+								<div class="col-md-4 col-lg-3">
+									<img src="{if avatar}{avatar_url}{if:else}{exp:fbc:theme_folder_url}code_pack/images/no-profile-pic.jpg{/if}" width="160" height="160" />
+								</div>
+								<div class="col-md-8 col-lg-9">
+									<h3>{screen_name}</h3>
+									<p>Joined {join_date format="%F %j, %Y"}</p>
+									<table class="table table-hover">
+										<tbody>
+											<tr>
+												<th scope="row" style="width: 30%; border-top: 0;">Group ID</th>
+												<td style="width: 70%; border-top: 0;">{group_id}</td>
+											</tr>
+											<tr>
+												<th scope="row">Member ID</th>
+												<td>{member_id}</td>
+											</tr>
+											<tr>
+												<th scope="row">Username</th>
+												<td>{username}</td>
+											</tr>
+											<tr>
+												<th scope="row">Email</th>
+												<td>{email}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							{/exp:member:custom_profile_data}
+							{if:else}
+								<p>You are not logged in EE. You must log in first to see your EE profile here.</p>
+							{/if}
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4">				
+{embed="%prefix%inc/sidebar"}
+				</div>
+			</div>
+
+			<div class="well" style="margin-top:30px;">
+				<h2 style="margin-top:5px;">About This Page</h2>
+				<p>The "Home/My Profile" page displays EE (if logged into EE) and Facebook (if synced to Facebook) member data for the currently logged in user.</p>
+				<p>It makes use of the following tags:</p>
+				<ul>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/member_data/">FBC:Member_Data</a> to display some simple Facebook profile data for the user.</li>
+					<li><a href="https://ellislab.com/expressionengine/user-guide/add-ons/member/#custom-profile-data-tag">EE Member:Custom_Profile_Data</a> to display some simple EE profile data for the user.</li>
+				</ul>
+				<p>The global sidebar on the right makes use of the following tags:</p>
+				<ul>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/login/">FBC:Login</a> to display a Facebook Login and Logout button, allowing logged in EE users to sync their accounts with Facebook, and allowing logged out users to easily create an account on your site.</li>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/fb_like_button/">FBC:Like</a> to display a Facebook "Like" and "Share" button on your site.</li>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/login_status/">FBC:Login_Status</a> to display some login information about the currently logged in user. This is also handy for troubleshooting while using FBC.</li>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/fb_activity_feed/">FBC:Activity_Feed</a> to display a list of all recent Facebook activity for this site amongst all users.</li>
+				</ul>
+			</div>
+
+{embed="%prefix%inc/footer"}

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Change Log | Fbc | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Fbc</a></li>
+						<li>Change Log</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><a href="http://www.solspace.com/software/detail/facebook_connect/">More Info | Purchase</a></li>
+<li class="current"><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
+<li><a href="creating_a_facebook_app.html">Creating a Facebook App</a></li>
+<li><a href="overview_important_notes.html">Overview &amp; Important Notes</a></li>
+<li><a href="behind_the_scenes.html">Behind the Scenes</a></li>
+<li><a href="publishing_to_facebook.html">Publishing to Facebook</a></li>
+<li class="template_tags"><h3>Template Tags</h3>
+
+<ul>
+<li><a href="account_sync_form.html">Account Sync Form</a></li>
+<li><a href="fb_activity_feed.html">FB Activity Feed</a></li>
+<li><a href="fb_comments_box.html">FB Comments Box</a></li>
+<li><a href="fb_like_button.html">FB Like Button</a></li>
+<li><a href="login.html">Login</a></li>
+<li><a href="login_status.html">Login Status</a></li>
+<li><a href="member_data.html">Member Data</a></li>
+<li><a href="permissions.html">Permissions</a></li>
+<li><a href="prepare_page.html">Prepare Page</a></li>
+<li><a href="set_permissions.html">Set Permissions</a></li>
+</ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.6.x - 2.9.x</li>
+<li>PHP 5.3+</li>
+<li>MySQL 5+</li>
+<li><a href="http://php.net/manual/en/book.curl.php">cURL</a></li>
+</ul></div></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<ul>
+<li><a href="#v3.0.0">Version 3.0.0</a></li>
+<li><a href="#v2.1.4">Version 2.1.4</a></li>
+<li><a href="#v2.1.3">Version 2.1.3</a></li>
+<li><a href="#v2.1.2">Version 2.1.2</a></li>
+<li><a href="#v2.1.1">Version 2.1.1</a></li>
+<li><a href="#v2.1.0">Version 2.1.0</a></li>
+<li><a href="#v2.0.9">Version 2.0.9</a></li>
+<li><a href="#v2.0.8">Version 2.0.8</a></li>
+<li><a href="#v2.0.7">Version 2.0.7</a></li>
+<li><a href="#v2.0.6">Version 2.0.6</a></li>
+<li><a href="#v2.0.5">Version 2.0.5</a></li>
+<li><a href="#v2.0.4">Version 2.0.4</a></li>
+<li><a href="#v2.0.3">Version 2.0.3</a></li>
+<li><a href="#v2.0.2">Version 2.0.2</a></li>
+<li><a href="#v2.0.1">Version 2.0.1</a></li>
+<li><a href="#v2.0.0">Version 2.0.0</a></li>
+<li><a href="#v1.0.3">Version 1.0.3</a></li>
+<li><a href="#v1.0.2">Version 1.0.2</a></li>
+<li><a href="#v1.0.1">Version 1.0.1</a></li>
+<li><a href="#v1.0.0">Version 1.0.0</a></li>
+</ul>
+
+<p><a name="v3.0.0"></a></p>
+
+<h2>Version 3.0.0 (March 20, 2015)</h2>
+
+<ul>
+<li>Updated Facebook Connect to use the latest Facebook 2.2 API.</li>
+<li>Updated and refreshed demo templates.</li>
+<li>Updated <a href="member_data.html">Member_Data</a> template tag to conform to new Facebook 2.2 API standards.</li>
+<li>Updated <a href="login.html">Login</a> and <a href="set_permissions.html">Set Permissions</a> template tags to conform to new Facebook 2.2 API permission standards. Facebook now requires many permissions (including publish stream/actions) to be manually <a href="https://developers.facebook.com/docs/apps/review/login#submitlogin">applied for and reviewed</a> by Facebook.</li>
+<li>Updated control panel pages to be cleaner.</li>
+<li>Updated 'profile_pic_size' parameter in <a href="member_data.html">Member_Data</a> to be named 'profile_pic_type', per Facebook's updated naming.</li>
+<li>Fixed a bug where the 'fbc_passive_register_end' hook passed $member_id which wasn't set properly.</li>
+<li>Fixed a bug where the <a href="permissions.html">Permissions</a> template tag was not always displaying accurate information.</li>
+<li>Fixed a bug where the <a href="login_status.html">Login_Status</a> template tag was not always displaying accurate information.</li>
+<li>Discontinued <a href="fb_registration.html">FB Registration plugin</a> per Facebook (discontinued on their end). If you were using this, use <a href="login.html">Facebook Login</a> approach instead.</li>
+<li>Removed logout_button_label= parameter in <a href="login.html">Login</a> tag as Facebook no longer allows for adjusting of the 'Log Out' label.</li>
+<li>Removed the refresh_page="no" parameter from the <a href="set_permissions.html">Set_Permissions</a> tag.</li>
+</ul>
+
+<p><a name="v2.1.4"></a></p>
+
+<h2>Version 2.1.4 (April 25, 2014)</h2>
+
+<ul>
+<li>Updated for compatibility with ExpressionEngine 2.8.</li>
+<li>Fixed a bug where submitting a Rating comment to Facebook would send a default text instead of what is in the "fbc_rating_comment_format" field.</li>
+</ul>
+
+<p><a name="v2.1.3"></a></p>
+
+<h2>Version 2.1.3 (October 9, 2013)</h2>
+
+<ul>
+<li>Updated for compatibility with ExpressionEngine 2.7.</li>
+</ul>
+
+<p><a name="v2.1.2"></a></p>
+
+<h2>Version 2.1.2 (May 9, 2013)</h2>
+
+<ul>
+<li>Updated for compatibility with ExpressionEngine 2.6.</li>
+<li>Fixed a bug where PHP errors would occur in the control panel on PHP 5.2.x.</li>
+<li>Fixed a bug where the language parameter in FBC:Prepare_Page tag would not work.</li>
+<li>Fixed a bug where when Passive registration was set to OFF, using the FBC:Register tag would display a "You are not authorized to access this website" error.</li>
+</ul>
+
+<p><a name="v2.1.1"></a></p>
+
+<h2>Version 2.1.1 (March 12, 2013)</h2>
+
+<ul>
+<li>Added internal Demo Templates tab in control panel (replaces older "code pack" approach).</li>
+<li>Updates are now automatic and no longer require a manual update screen.</li>
+<li>Fixed a bug where a missing Facebook App ID in the control panel could trigger a PHP error on the front end rather than just skipping over the functionality.</li>
+</ul>
+
+<p><a name="v2.1.0"></a></p>
+
+<h2>Version 2.1.0 (February 9, 2013)</h2>
+
+<ul>
+<li>Removed support for ExpressionEngine 1.x (Facebook Connect is now EE2 only).</li>
+<li>Added offline documentation files to download package.</li>
+<li>Fixed a bug where MySQL errors could occur in front end templates in EE 2.5.4+.</li>
+<li>Fixed bugs where some MySQL queries were not MySQL strict mode compliant.</li>
+<li>Fixed the default theme folder URL as it was defaulting to legacy locations.</li>
+</ul>
+
+<p><a name="v2.0.9"></a></p>
+
+<h2>Version 2.0.9 (April 17, 2012)</h2>
+
+<ul>
+<li>Added registration data to the fbc_member_member_register
+extension hook.</li>
+<li>Updated FBC to use the new Facebook JS SDK.</li>
+</ul>
+
+<p><a name="v2.0.8"></a></p>
+
+<h2>Version 2.0.8 (February 23, 2012)</h2>
+
+<ul>
+<li>Fixed a bug where the 'if fbc_logged_in' and 'if fbc_logged_out'
+conditionals within FBC:Login would evaluate incorrectly.</li>
+<li>Fixed a bug where FBC would send the title of an entry into the
+description (in addition to the entry body) when publishing comments
+to a users' Facebook wall.</li>
+<li>Fixed a bug where after install of FBC, some preferences would not
+show default selections.</li>
+</ul>
+
+<p><a name="v2.0.7"></a></p>
+
+<h2>Version 2.0.7 (February 15, 2012)</h2>
+
+<ul>
+<li>Modified the code with various changes to make FBC work better with
+EE 2.2 and above.</li>
+</ul>
+
+<p><a name="v2.0.6"></a></p>
+
+<h2>Version 2.0.6 (December 5, 2011)</h2>
+
+<ul>
+<li>Fixed a bug where PHP errors would display in EE templates for some
+users in EE1.</li>
+</ul>
+
+<p><a name="v2.0.5"></a></p>
+
+<h2>Version 2.0.5 (November 11, 2011)</h2>
+
+<ul>
+<li>Fixed a bug where the FBC:Registration tag would not successfully
+process. Also, Facebook now requires this form to be submitted
+through HTTPS.</li>
+<li>Fixed a bug where a PHP error would display in the FBC control panel
+area in EE1.</li>
+</ul>
+
+<p><a name="v2.0.4"></a></p>
+
+<h2>Version 2.0.4 (October 31, 2011)</h2>
+
+<ul>
+<li>Fixed a bug where Facebook PHP SDK was treating the incoming data as
+an array instead of an object.</li>
+</ul>
+
+<p><a name="v2.0.3"></a></p>
+
+<h2>Version 2.0.3 (September 7, 2011)</h2>
+
+<ul>
+<li>Added new 'fbc_member_member_register' extension hook.</li>
+<li>Updated FBC to use new Facebook PHP SDK 3.0.</li>
+<li>Fixed a bug where the "Enable Membership Captcha" setting was not
+being properly respected.</li>
+</ul>
+
+<p><a name="v2.0.2"></a></p>
+
+<h2>Version 2.0.2 (August 3, 2011)</h2>
+
+<ul>
+<li>Added sample templates set (Code Pack) to display Facebook Connect
+tags in action.</li>
+<li>Fixed a bug where the href="" parameter in FB plugin tags would not
+work with {site_url} and {path} variables.</li>
+</ul>
+
+<p><a name="v2.0.1"></a></p>
+
+<h2>Version 2.0.1 (July 4, 2011)</h2>
+
+<ul>
+<li>Added Facebook certificate file for compatibility with servers that
+require it.</li>
+<li>Added show_captcha= parameter to FBC:Registration tag to override
+EE settings for Membership Captcha.</li>
+<li>Modified behavior of FBC:Registration form to only show custom
+member fields that are set to display in Register form AND are set
+to 'required'.</li>
+<li>Fixed a bug where Captcha was not displaying properly in the
+FBC:Registration tag.</li>
+<li>Fixed a bug where the Member Group selection field preference did
+not work in the FBC CP in EE 2.2.x.</li>
+<li>Fixed a bug where FBC would sometimes try to randomly grab any image
+from the page a user posts to their Facebook profile.</li>
+</ul>
+
+<p><a name="v2.0.0"></a></p>
+
+<h2>Version 2.0.0 (June 16, 2011)</h2>
+
+<ul>
+<li>Converted to use the new Facebook 2.0 API.</li>
+<li>Converted FBC to use Solspace Add-on Builder Framework, and Solspace
+Bridge for EE 1.x.</li>
+<li>Added the 'Registration' tag (Facebook Registration plugin).</li>
+<li>Added the 'Comments' tag (Facebook Comments Box plugin).</li>
+<li>Added the 'Like' tag (Facebook Like plugin).</li>
+<li>Added the 'Activity_Feed' tag (Facebook Activity Feed plugin).</li>
+<li>Added the 'Permissions' tag, which allows you to parse a set of
+conditionals that check on Facebook permissions per user.</li>
+<li>Added support for publishing Rating module ratings/reviews to
+Facebook.</li>
+<li>Added 'fbc_image_attachment' form field to allow attaching of an
+image to Facebook wall publishing.</li>
+<li>Added the 'show_faces', 'max_rows', 'width', and 'permissions'
+attributes to the Login button.</li>
+<li>Added the 'language' attribute to the Set Permissions button.</li>
+<li>Added compatibility for NSM Add-on updater.</li>
+<li>Changed API key to App ID.</li>
+<li>Changed Prepare_Page javascript to use the new API Javascript SDK.</li>
+<li>Change API class to use new Facebook API authentication.</li>
+<li>Changed and fixed the DB method of storing parameters so that it
+would not overload a site and set this as the default for the add-on
+out of the box.</li>
+<li>Changed the Member_Data tag to behave differently. Now just
+Facebook profile data is available as variables.</li>
+<li>Changed the Login_Status tag to behave differently. A new set of
+conditionals are available.</li>
+<li>Changed the Passive Registration and Confirm Account Sync parameters
+now to be settings in the Prefences tab in the FBC CP.</li>
+<li>Modified the CP diagnostics page to be much less confusing and more
+informative.</li>
+<li>Removed the SSL test in Prepare_Page as it is built into the new
+Javascript SDK.</li>
+<li>Removed cross domain cookie file.</li>
+<li>Removed Facebook Connect URL preference.</li>
+<li>Removed FBC themes folder, as it is no longer necessary with new
+API.</li>
+<li>Renamed the 'Prompt_For_Permission' tag to "Set_Permissions".</li>
+<li>Renamed the 'Login_Logout_Button' tag to 'Login'. Deprecated the
+'Login_Button', 'Logout_Button' and 'Logout_JS' tags.</li>
+<li>Renamed the 'fbc_stream_publish' form field to
+'fbc_publish_to_facebook'.</li>
+</ul>
+
+<p><a name="v1.0.3"></a></p>
+
+<h2>Version 1.0.3 (December 21, 2010)</h2>
+
+<ul>
+<li>Updated and enhanced Facebook Connect module CP area (in EE 2.x) to
+conform completely to native EE styling.</li>
+<li>Removed "flow_ui" theme from Facebook Connect module in EE 1.x.</li>
+<li>Fixed a bug where when forcing query strings on the server, the
+Login/Logout procedures would not work correctly.</li>
+</ul>
+
+<p><a name="v1.0.2"></a></p>
+
+<h2>Version 1.0.2 (July 12, 2010)</h2>
+
+<ul>
+<li>Modified all instances of BASEPATH to now use PATH_THIRD as the app
+folder is outside of the system folder in EE 2.1.</li>
+</ul>
+
+<p><a name="v1.0.1"></a></p>
+
+<h2>Version 1.0.1 (June 15, 2010)</h2>
+
+<ul>
+<li>Added the ability to control the Facebook Connect URL from the
+module CP.</li>
+<li>Updated all instances of XID_SECURE_HASH to \$XID_SECURE_HASH in
+EE 2.x view files.</li>
+<li>Fixed a bug where FBC was not recognizing the User module preference
+for using email as username.</li>
+<li>Fixed a bug where FBC would sometimes display an incorrect URL on
+links published in a Facebook profile.</li>
+</ul>
+
+<p><a name="v1.0.0"></a></p>
+
+<h2>Version 1.0.0 (April 17, 2010)</h2>
+
+<ul>
+<li>Initial release.</li>
+</ul>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+			<div class="footer">
+				<p>&copy; {current_time format="%Y"} Solspace, Inc.</p>
+			</div>
+			
+			{!-- Begin Testing and Debugging --}
+			<div class="panel panel-default solspace-debug">
+				<div class="panel-heading">
+					<h3 class="panel-title">Logged In/Out Testing &amp; Debugging</h3>
+				</div>
+				<div class="panel-body">
+					<ul>
+						<li>Are you Logged in?: {if logged_in}Your are Logged In{/if}{if logged_out}Your are Logged Out{/if}</li>
+						<li>Currently Logged in Member ID: {logged_in_member_id}</li>
+						<li>Currently Logged in Username: {logged_in_username}</li>
+						<li>Currently Logged in Screen Name: {logged_in_screen_name}</li>
+						<li>Currently Logged in Member Group ID: {logged_in_group_id}</li>
+					</ul>
+				</div>
+			</div>
+			{!-- End Testing and Debugging --}
+
+		</div> <!-- /container -->
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="{exp:fbc:theme_folder_url}code_pack/js/bootstrap.min.js"></script>
+		{exp:fbc:prepare_page}
+	</body>
+</html>

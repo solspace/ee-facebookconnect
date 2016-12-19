@@ -1,0 +1,87 @@
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Facebook Login</h3>
+						</div>
+						<div class="panel-body">
+						{if logged_in_group_id == "1"}
+							<div class="alert alert-info" role="alert">
+ 								<p><strong>NOTE:</strong> You are logged in as Super Admin, so you cannot login through Facebook Connect.</p>
+							</div>
+						{/if}
+						{if logged_in_group_id != "1"}
+							{exp:fbc:login
+								permissions="public_profile|email|user_friends"
+								return_when_logged_in="%prefix%main/status/logged_in"
+								return_when_logged_out="%prefix%main/status/logged_out"
+								return_for_passive_register="%prefix%main/status/registered"
+								return_to_register="%prefix%main/register"
+								return_to_confirm_account_sync="%prefix%main/confirm"
+								return_on_failure="%prefix%main/status/fail"
+							}
+								{if fbc_logged_out == "y"}
+									{fbc_login_button}
+								{/if}
+								{if fbc_logged_in == "y"}
+									Logged in through Facebook
+									(<a href="{path='logout'}">Log out</a>)
+								{/if}
+							{/exp:fbc:login}
+						{/if}
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Facebook Like</h3>
+						</div>
+						<div class="panel-body">
+						{exp:fbc:like
+							href="{site_url}"
+							share="true"
+							layout="button_count"
+							width="150"
+							show_faces="false"
+							action="like"
+							colorscheme="light"
+				  		}
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Login Status (troubleshooting)</h3>
+						</div>
+						<div class="panel-body">
+							<ul class="list-group">
+							{exp:fbc:login_status}
+								<li class="list-group-item {if fbc_logged_into_ee == "y"}list-group-item-success{if:else}list-group-item-warning{/if}">
+									<span class="badge">{if fbc_logged_into_ee == "y"}Yes{if:else}No{/if}</span>
+									Logged into EE?
+								</li>
+								<li class="list-group-item {if fbc_logged_into_facebook == "y"}list-group-item-success{if:else}list-group-item-warning{/if}">
+									<span class="badge">{if fbc_logged_into_facebook == "y"}Yes{if:else}No{/if}</span>
+									Logged into Facebook?
+								</li>
+								<li class="list-group-item {if fbc_logged_into_ee == "y" AND fbc_logged_into_facebook == "y"}list-group-item-success{if:else}list-group-item-warning{/if}">
+									<span class="badge">{if fbc_logged_into_ee == "y" AND fbc_logged_into_facebook == "y"}Yes{if:else}No{/if}</span>
+									Logged into Facebook <i>&amp;</i> EE?
+								</li>
+								<li class="list-group-item {if fbc_logged_into_facebook_and_ee == "y"}list-group-item-success{if:else}list-group-item-warning{/if}">
+									<span class="badge">{if fbc_logged_into_facebook_and_ee == "y"}Yes{if:else}No{/if}</span>
+									Facebook &amp; EE accounts synced?
+								</li>
+							{/exp:fbc:login_status}
+							</ul>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Facebook Activity</h3>
+						</div>
+						<div class="panel-body">
+						{exp:fbc:activity
+							width="275"
+							height="200"
+							header="false"
+							recommendations="true"
+						}
+						</div>
+					</div>

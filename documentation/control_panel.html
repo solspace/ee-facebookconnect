@@ -7,7 +7,7 @@
 	<head lang="en">
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<title>Permissions | Fbc | Solspace Addon Documentation</title>
+		<title>Control Panel | Fbc | Solspace Addon Documentation</title>
 		<meta name="description" content="" />
 		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
 		<meta name="viewport" content="width=device-width" />
@@ -32,7 +32,7 @@
 				<div class="bread_crumbs">
 					<ul class="crumbs">
 						<li class="first"><a href="index.html">Fbc</a></li>
-						<li>Permissions</li>
+						<li>Control Panel</li>
 					</ul>
 				</div>
 			</div>
@@ -44,7 +44,7 @@
 <li><a href="http://www.solspace.com/software/detail/facebook_connect/">More Info | Purchase</a></li>
 <li><a href="change_log.html">Change Log</a></li>
 <li><a href="install_update.html">Install / Update</a></li>
-<li><a href="control_panel.html">Control Panel</a></li>
+<li class="current"><a href="control_panel.html">Control Panel</a></li>
 <li><a href="creating_a_facebook_app.html">Creating a Facebook App</a></li>
 <li><a href="overview_important_notes.html">Overview &amp; Important Notes</a></li>
 <li><a href="behind_the_scenes.html">Behind the Scenes</a></li>
@@ -59,7 +59,7 @@
 <li><a href="login.html">Login</a></li>
 <li><a href="login_status.html">Login Status</a></li>
 <li><a href="member_data.html">Member Data</a></li>
-<li class="current"><a href="permissions.html">Permissions</a></li>
+<li><a href="permissions.html">Permissions</a></li>
 <li><a href="prepare_page.html">Prepare Page</a></li>
 <li><a href="set_permissions.html">Set Permissions</a></li>
 </ul></li>
@@ -75,55 +75,40 @@
 			</nav>
 
 			<article class="docs">
-				<p>Permissions from Facebook site for use on your EE site are granted during <a href="login.html">Login</a> process or <a href="set_permissions.html">Set_Permissions</a> process. This template tag allows you to check which Facebook permissions the logged in user has granted.</p>
-
-<p>Facebook allows the following permissions to be request from users without needing manual review by Facebook:</p>
+				<p>The Facebook Connect control panel area allows you adjust preferences and run diagnostics.</p>
 
 <ul>
-<li><em>public_profile</em></li>
-<li><em>email</em></li>
-<li><em>user_friends</em></li>
+<li><a href="#preferences">Preferences</a></li>
+<li><a href="#diagnostics">Diagnostics</a></li>
+<li><a href="#demo_templates">Demo Templates</a></li>
+<li><a href="#documentation">Documentation</a></li>
 </ul>
 
-<p>These are the main permissions you'll need as well, with the exception of <strong>publish_actions</strong>, which allows your users to publish data from your site onto their Facebook profile.</p>
+<p><a name="preferences"></a></p>
 
-<p>You can view the full list of permissions in the <a href="https://developers.facebook.com/docs/facebook-login/permissions/v2.2">Facebook Permissions Documentation</a>. Use the names mentioned in the User permission column.</p>
+<h2>Preferences</h2>
 
-<p>If you intend on using/requesting any information other than <em>public_profile</em>, <em>email</em> and <em>user_friends</em>, you'll need to obtain permission manually from Facebook. For example, if you wish to allow users to publish content such as EE comments to the users' Facebook profile (<strong>publish_actions</strong>), you'll need to manually request permission from Facebook. You can learn more about <a href="https://developers.facebook.com/docs/apps/review/login#submitlogin">How to Submit for Login Review (Facebook Developer Documentation)</a> here.</p>
+<p>This is where you can control which member accounts are eligible for FB login, and which member group people are assigned to during passive registration and active registration. If a person belongs to one of the eligible member groups AND they are logged into EE AND they submit the FB login button, their FB ID will be synced with your EE account and they will be able to use it to login in the future. As a security provision, Super Admin accounts can never be synced with Facebook Accounts.</p>
 
-<p>To check against permissions granted, format your conditionals like this, where <strong>PERMISSION_NAME</strong> is the name of the permission in the <a href="https://developers.facebook.com/docs/facebook-login/permissions/v2.2">Facebook Permissions Documentation</a>):</p>
+<p>You can also enable <strong>Passive Registrations</strong>, as well as the option to have EE logged in users be given an additional "confirm" step when they click the Facebook Login button.</p>
 
-<pre class="brush: html;">{if fbc_allow_PERMISSION_NAME == "y"}{/if}</pre>
+<p><a name="diagnostics"></a></p>
 
-<p><a name="examples"></a></p>
+<h2>Diagnostics</h2>
 
-<h2>Example</h2>
+<p>This tab allows you to view and run some simple diagnostics on your sites' connection to Facebook.</p>
 
-<p>Here’s an example of how you would determine some permissions of a
-logged in user:</p>
+<p><a name="demo_templates"></a></p>
 
-<pre class="brush: html;">&lt;h3&gt;Permissions I have granted for {site_name}:&lt;/h3&gt;
-&lt;ul&gt;
-{exp:fbc:permissions}
-    &lt;li&gt;
-        Public Profile?
-        &lt;b&gt;{if fbc_allow_public_profile == "y"}Yes{if:else}No{/if}&lt;/b&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        Email Address?
-        &lt;b&gt;{if fbc_allow_email == "y"}Yes{if:else}No{/if}&lt;/b&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        User Friends List?
-        &lt;b&gt;{if fbc_allow_user_friends == "y"}Yes{if:else}No{/if}&lt;/b&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        Allow Publishing to Facebook?
-        &lt;b&gt;{if fbc_facebook_allow_publish_actions == "y"}Yes{if:else}No{/if}&lt;/b&gt;
-    &lt;/li&gt;
-{/exp:fbc:permissions}
-&lt;/ul&gt;
-</pre>
+<h2>Demo Templates</h2>
+
+<p>If you wish to load the demo templates for Facebook Connect, go to this tab. Then just create a prefix name for the sample data such as <em>test_</em> or <em>fbc_</em>, and click the <strong>Install Demo Templates</strong> button.</p>
+
+<p><a name="documentation"></a></p>
+
+<h2>Documentation</h2>
+
+<p>All documentation is available on the Solspace site. This tab will take you directly to the Solspace site documentation area.</p>
 			</article>
 		</div>
 

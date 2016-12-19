@@ -1,0 +1,50 @@
+<?php $this->view('header.html'); ?>
+
+<div class="clear_left"></div>
+
+<div class="pageContents">
+	<table id="entries" class="mainTable padTable" border="0" cellspacing="0" cellpadding="0">
+		<thead>
+			<tr>
+				<th style="width:100%;" colspan="2"><?=lang('diagnostics_exp'); ?></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr class="odd">
+				<td style="width:50%;">
+					<label for='api_credentials_present'><?=lang('api_credentials_present'); ?></label>
+					<div class="subtext"><?=lang('api_credentials_present_exp'); ?></div>
+				</td>
+				<td style="width:50%;">
+					<?=$api_credentials_present; ?>
+				</td>
+			</tr>
+			<!-- Facebook API credentials present -->
+
+			<tr class="even">
+				<td>
+					<label for='logged_in_to_facebook'><?=lang('logged_in_to_facebook'); ?></label>
+					<div class="subtext"><?=lang('logged_in_to_facebook_exp'); ?></div>
+				</td>
+				<td>
+					<fb:login-button autologoutlink="true" onlogin="window.location.reload()"></fb:login-button>
+				</td>
+			</tr>
+			<!-- Facebook API login -->
+
+			<tr class="odd">
+				<td>
+					<label for='api_successful_connect'><?=lang('api_successful_connect'); ?></label>
+					<div class="subtext"><?=lang('api_successful_connect_exp'); ?></div>
+				</td>
+				<td>
+					<?=$api_successful_connect; ?>
+				</td>
+			</tr>
+			<!-- Facebook API successful connect -->
+		</tbody>
+	</table>
+</div><!-- End page contents -->
+
+<?php $this->view('footer.html'); ?>

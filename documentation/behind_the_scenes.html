@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Behind the Scenes | Fbc | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Fbc</a></li>
+						<li>Behind the Scenes</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><a href="http://www.solspace.com/software/detail/facebook_connect/">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
+<li><a href="creating_a_facebook_app.html">Creating a Facebook App</a></li>
+<li><a href="overview_important_notes.html">Overview &amp; Important Notes</a></li>
+<li class="current"><a href="behind_the_scenes.html">Behind the Scenes</a></li>
+<li><a href="publishing_to_facebook.html">Publishing to Facebook</a></li>
+<li class="template_tags"><h3>Template Tags</h3>
+
+<ul>
+<li><a href="account_sync_form.html">Account Sync Form</a></li>
+<li><a href="fb_activity_feed.html">FB Activity Feed</a></li>
+<li><a href="fb_comments_box.html">FB Comments Box</a></li>
+<li><a href="fb_like_button.html">FB Like Button</a></li>
+<li><a href="login.html">Login</a></li>
+<li><a href="login_status.html">Login Status</a></li>
+<li><a href="member_data.html">Member Data</a></li>
+<li><a href="permissions.html">Permissions</a></li>
+<li><a href="prepare_page.html">Prepare Page</a></li>
+<li><a href="set_permissions.html">Set Permissions</a></li>
+</ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.6.x - 2.9.x</li>
+<li>PHP 5.3+</li>
+<li>MySQL 5+</li>
+<li><a href="http://php.net/manual/en/book.curl.php">cURL</a></li>
+</ul></div></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<h2>Behind the Scenes</h2>
+
+<p>One of the main goals of Facebook Connect (FBC) is to allow your site visitors to log into your site as an EE member using their Facebook account. The advantage is that visitors to your site do not need to keep track yet another username and password - <em>their Facebook account is all they need to know to log into your website</em>.</p>
+
+<ul>
+<li><a href="#passive">Passive Registration (new users with no EE account)</a></li>
+<li><a href="#nonpassive">Non-Passive Registration (new users with no EE account)</a></li>
+<li><a href="#returning">Returning Users (after creating an EE account through FBC)</a></li>
+<li><a href="#previous">Users with a Previous EE Member Account</a></li>
+</ul>
+
+<p><a name="passive"></a></p>
+
+<h2>Passive Registration (new users with no EE account)</h2>
+
+<p>Your site's registration can be automated using FBC's <strong>passive registration</strong> feature. New users automatically receive an EE member account and are automatically logged into your site. Behind the scenes, these are the chain of events that occur <em>for a new user</em> when passive registration is enabled:</p>
+
+<ol>
+<li>A new user (ex: no EE member account) visits your website and clicks the <a href="login.html">FBC Login button</a>.
+
+<ul>
+<li>If the user is not logged into Facebook, a popup window will appear asking them to first login to Facebook.</li>
+</ul></li>
+<li>A popup appears to ask the user to register your website as one of their apps in their Facebook account.</li>
+<li>The user allows the permissions mentioned in the popup and clicks <em>Allow</em>.
+
+<ul>
+<li>For permissions, if email is allowed as a permission, for example, FBC will add the user's real Facebook email address in the EE member account's email field. This process is similar for the other permissions.</li>
+<li>Permissions are based on the allowed permissions set by the permissions parameter in the <a href="login.html">Login</a> tag.</li>
+</ul></li>
+<li>(Background) FBC will create an EE account, based on one of the two following cases:
+
+<ul>
+<li>If the <em>Confirm Before Syncing Accounts?</em> preference is set to <strong>NO</strong> (most common setting):
+
+<ul>
+<li>FBC will create an EE member account from the users basic Facebook data, and then link the EE member account to the users Facebook account.</li>
+</ul></li>
+<li>If the <em>Confirm Before Syncing Accounts?</em> preference is set to <strong>YES</strong>:
+
+<ul>
+<li>An EE member account will be created and linked with the user’s Facebook account only after they complete the <a href="account_sync_form.html">FBC Account Sync Form</a>.</li>
+<li>Access to the <strong>FBC Account Sync Form</strong> can be done using the return_to_confirm_account_sync parameter in <a href="login.html">Login</a> tag.</li>
+<li>Once the <strong>FBC Account Sync Form</strong> is completed and submitted, FBC will create an EE member account from the users basic Facebook data, and then link the EE member account to the users Facebook account.</li>
+</ul></li>
+</ul></li>
+<li>The user is now logged into both Facebook and your EE site, using only their Facebook account. This is also known as being <strong>FBC logged in</strong>.</li>
+</ol>
+
+<p><a name="nonpassive"></a></p>
+
+<h2>Non-Passive Registration (new users with no EE account)</h2>
+
+<p>You may also choose to allow registration on your website with a user's Facebook account through a more active registration approach. This option assumes you're using a member registration add-on such as <a href="http://www.solspace.com/user">Solspace User addon</a> or similar. Behind the scenes, these are the chain of events that can occur <em>for a new user</em> when <strong>passive registration is disabled</strong>:</p>
+
+<ol>
+<li>A new user (ex: no EE member account) visits your website and clicks the <a href="login.html">FBC Login button</a>.
+
+<ul>
+<li>If the user is not logged into Facebook, a popup window will appear asking them to first login to Facebook.</li>
+</ul></li>
+<li>The user is sent to a page with a Register form based on <strong>FBC:Login</strong>'s <em>return_to_register</em> parameter.</li>
+<li>The user fills out your Registration form (with <a href="http://www.solspace.com/user">Solspace User addon</a> or similar) and successfully submits form.</li>
+<li>(Background) EE will create an EE member account as usual.</li>
+<li>User will need to be presented with <a href="login.html">FBC Login button</a> again to sync newly created EE account with Facebook.</li>
+<li>Continue to <a href="#previous">Users with a Previous EE Member Account</a> documentation for next steps.</li>
+</ol>
+
+<p><a name="returning"></a></p>
+
+<h2>Returning Users (after creating an EE account through FBC)</h2>
+
+<p>If the user revisits your site again later, they will be automatically logged in to your site as long as their browser remembers them. If not, they will only need to click on the <a href="login.html">FBC Login button</a> to log into your website as an EE member. Here are the chain of events in that case:</p>
+
+<ol>
+<li>A user visits your website and clicks the <a href="login.html">FBC Login button</a>.
+
+<ul>
+<li>If the user is not logged into Facebook, a popup window will appear asking them to first login to Facebook.</li>
+</ul></li>
+<li>(Background) FBC compares the user's Facebook account information with the linked EE member account.</li>
+<li>(Background) FBC logs the user in to your website as an EE user.</li>
+<li>The user is now logged into both Facebook and EE. This is also known as being <strong>FBC logged in</strong>.</li>
+</ol>
+
+<p><a name="previous"></a></p>
+
+<h2>Users with a Previous EE Member Account</h2>
+
+<p>Users that have an EE member account created before FBC was installed, or created an EE member account using the native EE or <a href="http://www.solspace.com/user">Solspace User addon</a> (or similar) registration form, will first need to log into EE before linking their account to their Facebook account. If a user with a previous EE member account does not log into EE, FBC will create a new EE member account when using the <a href="login.html">FBC Login button</a> if Passive Registration is <strong>ON</strong>, effectively creating two accounts for this user (undesirable of course).</p>
+
+<p>Here are the chain of events for users with a previous EE member account / already logged into EE but not yet synced to Facebook:</p>
+
+<ol>
+<li>A user first logs into EE using a <a href="https://ellislab.com/expressionengine/user-guide/add-ons/member/index.html#login-form-tag">standard login form</a> or similar.</li>
+<li>The user then clicks the <a href="login.html">FBC Login button.</a>
+
+<ul>
+<li>If the user is not logged into Facebook, a popup window will appear asking them to first login to Facebook.</li>
+</ul></li>
+<li>A popup appears to ask the user to register your website as one of their apps in their Facebook account.</li>
+<li>The user allows the permissions mentioned in the popup and clicks <em>Allow</em>.
+
+<ul>
+<li>For permissions, if email is allowed as a permission, for example, FBC will add the user's real Facebook email address in the EE member account's email field. This process is similar for the other permissions.</li>
+<li>Permissions are based on the allowed permissions set by the permissions parameter in the <a href="login.html">Login</a> tag.</li>
+</ul></li>
+<li>(Background) FBC will create an EE account, based on one of the two following cases:
+
+<ul>
+<li>If the <em>Confirm Before Syncing Accounts?</em> preference is set to <strong>NO</strong> (most common setting):
+
+<ul>
+<li>FBC will create an EE member account from the users basic Facebook data, and then link the EE member account to the users Facebook account.</li>
+</ul></li>
+<li>If the <em>Confirm Before Syncing Accounts?</em> preference is set to <strong>YES</strong>:
+
+<ul>
+<li>An EE member account will be created and linked with the user’s Facebook account only after they complete the <a href="account_sync_form.html">FBC Account Sync Form</a>.</li>
+<li>Access to the <strong>FBC Account Sync Form</strong> can be done using the <em>return_to_confirm_account_sync</em> parameter in <a href="login.html">Login</a> tag.</li>
+<li>Once the <strong>FBC Account Sync Form</strong> is completed and submitted, FBC will create an EE member account from the users basic Facebook data, and then link the EE member account to the users Facebook account.</li>
+</ul></li>
+</ul></li>
+<li>The user is now logged into both Facebook and your EE site, using only their Facebook account. This is also known as being <strong>FBC logged in</strong>.</li>
+</ol>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

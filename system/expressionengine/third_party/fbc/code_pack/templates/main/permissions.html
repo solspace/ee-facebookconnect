@@ -1,0 +1,88 @@
+{embed="%prefix%inc/index" page_title="Manage Permissions"}
+	</head>
+
+	<body role="document">
+
+{embed="%prefix%inc/header"}
+
+		<div class="container" style="margin-top:30px;">
+
+			<div class="page-header">
+				<h1>Manage Permissions</h1>
+				<p class="lead">This page displays a list of permissions the logged in EE/FB (synced) user has or has not granted to this site, and allows them to grant more permissions.</p>
+			</div>
+
+			<div class="row">
+				<div class="col-md-8">
+				{if segment_3 == "success"}
+					<div class="alert alert-success" role="alert">
+						<p class="lead">You have successfully updated your permissions!</p>
+					</div>
+				{/if}
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">Permissions you have granted to Facebook for {site_name}</h3>
+						</div>
+						<div class="panel-body">
+							{exp:fbc:login_status}
+							{if fbc_logged_into_facebook_and_ee == "y"}
+								{exp:fbc:permissions}
+								<table class="table table-hover">
+									<tbody>
+										<tr>
+											<th scope="row" style="width: 60%; border-top: 0;">Public Profile</th>
+											<td class="{if fbc_allow_public_profile == "y"}text-success{if:else}text-danger{/if}" style="width: 40%; border-top: 0;">{if fbc_allow_public_profile == "y"}Yes{if:else}No{/if}</td>
+										</tr>
+										<tr>
+											<th scope="row">Email Address</th>
+											<td class="{if fbc_allow_email == "y"}text-success{if:else}text-danger{/if}">{if fbc_allow_email == "y"}Yes{if:else}No{/if}</td>
+										</tr>
+										<tr>
+											<th scope="row">User Friends List</th>
+											<td class="{if fbc_allow_user_friends == "y"}text-success{if:else}text-danger{/if}">{if fbc_allow_user_friends == "y"}Yes{if:else}No{/if}</td>
+										</tr>
+										<tr>
+											<th scope="row">Publishing to Facebook</th>
+											<td class="{if fbc_allow_publish_actions == "y"}text-success{if:else}text-danger{/if}">{if fbc_allow_publish_actions == "y"}Yes{if:else}No{/if}</td>
+										</tr>
+									</tbody>
+								</table>
+								{/exp:fbc:permissions}
+							
+								{exp:fbc:set_permissions
+									button_label="Set Facebook Permissions"
+									button_size="medium"
+									permissions="public_profile|email|user_friends|publish_actions"
+									return_when_logged_in="%prefix%main/permissions/success"
+								}
+							{if:else}
+								<p>You have not synced your EE and Facebook accounts yet, or you're not logged in.</p>
+							{/if}
+							{/exp:fbc:login_status}
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4">				
+{embed="%prefix%inc/sidebar"}
+				</div>
+			</div>
+
+			<div class="well" style="margin-top:30px;">
+				<h2 style="margin-top:5px;">About This Page</h2>
+				<p>The "Manage Permissions" page displays a list of permissions the logged in EE/FB (synced) user has or has not granted to this site, and allows them to grant more permissions.</p>
+				<p>It makes use of the following tags:</p>
+				<ul>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/permissions/">FBC:Permissions</a> to display a list of permissions granted to this site by the currently logged in user.</li>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/set_permissions/">FBC:Set_Permissions</a> to display a button that allows users to set permissions for the site if they haven't done so already. Also allows site admin to add additional permissions to be approved by users at a later time.</li>
+				</ul>
+				<p>The global sidebar on the right makes use of the following tags:</p>
+				<ul>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/login/">FBC:Login</a> to display a Facebook Login and Logout button, allowing logged in EE users to sync their accounts with Facebook, and allowing logged out users to easily create an account on your site.</li>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/fb_like_button/">FBC:Like</a> to display a Facebook "Like" and "Share" button on your site.</li>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/login_status/">FBC:Login_Status</a> to display some login information about the currently logged in user. This is also handy for troubleshooting while using FBC.</li>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/fb_activity_feed/">FBC:Activity_Feed</a> to display a list of all recent Facebook activity for this site amongst all users.</li>
+				</ul>
+			</div>
+
+{embed="%prefix%inc/footer"}

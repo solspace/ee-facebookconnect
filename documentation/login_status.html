@@ -7,7 +7,7 @@
 	<head lang="en">
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<title>Permissions | Fbc | Solspace Addon Documentation</title>
+		<title>Login Status | Fbc | Solspace Addon Documentation</title>
 		<meta name="description" content="" />
 		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
 		<meta name="viewport" content="width=device-width" />
@@ -32,7 +32,7 @@
 				<div class="bread_crumbs">
 					<ul class="crumbs">
 						<li class="first"><a href="index.html">Fbc</a></li>
-						<li>Permissions</li>
+						<li>Login Status</li>
 					</ul>
 				</div>
 			</div>
@@ -57,9 +57,9 @@
 <li><a href="fb_comments_box.html">FB Comments Box</a></li>
 <li><a href="fb_like_button.html">FB Like Button</a></li>
 <li><a href="login.html">Login</a></li>
-<li><a href="login_status.html">Login Status</a></li>
+<li class="current"><a href="login_status.html">Login Status</a></li>
 <li><a href="member_data.html">Member Data</a></li>
-<li class="current"><a href="permissions.html">Permissions</a></li>
+<li><a href="permissions.html">Permissions</a></li>
 <li><a href="prepare_page.html">Prepare Page</a></li>
 <li><a href="set_permissions.html">Set Permissions</a></li>
 </ul></li>
@@ -75,53 +75,94 @@
 			</nav>
 
 			<article class="docs">
-				<p>Permissions from Facebook site for use on your EE site are granted during <a href="login.html">Login</a> process or <a href="set_permissions.html">Set_Permissions</a> process. This template tag allows you to check which Facebook permissions the logged in user has granted.</p>
+				<p>This is a simple tag that allows you to use conditionals to determine whether or not a user is Facebook logged in, EE logged in or both. This tag is also handy for troubleshooting on your site.</p>
 
-<p>Facebook allows the following permissions to be request from users without needing manual review by Facebook:</p>
+<p><strong>NOTE: Due to some security settings and limitations by Facebook, conditionals that check to see if the user is logged into Facebook will not work until the user has made some kind of interaction (to generate a valid security token to Facebook) with the Facebook Connect add-on on your site.</strong></p>
+
+<pre class="brush: html;">{exp:fbc:login_status} content {/exp:fbc:login_status}</pre>
 
 <ul>
-<li><em>public_profile</em></li>
-<li><em>email</em></li>
-<li><em>user_friends</em></li>
+<li><a href="#conditionals">Conditionals</a></li>
+<li><a href="#examples">Examples</a></li>
 </ul>
 
-<p>These are the main permissions you'll need as well, with the exception of <strong>publish_actions</strong>, which allows your users to publish data from your site onto their Facebook profile.</p>
+<p><a name="conditionals"></a></p>
 
-<p>You can view the full list of permissions in the <a href="https://developers.facebook.com/docs/facebook-login/permissions/v2.2">Facebook Permissions Documentation</a>. Use the names mentioned in the User permission column.</p>
+<h2>Conditionals</h2>
 
-<p>If you intend on using/requesting any information other than <em>public_profile</em>, <em>email</em> and <em>user_friends</em>, you'll need to obtain permission manually from Facebook. For example, if you wish to allow users to publish content such as EE comments to the users' Facebook profile (<strong>publish_actions</strong>), you'll need to manually request permission from Facebook. You can learn more about <a href="https://developers.facebook.com/docs/apps/review/login#submitlogin">How to Submit for Login Review (Facebook Developer Documentation)</a> here.</p>
+<p>The following conditionals are available for use:</p>
 
-<p>To check against permissions granted, format your conditionals like this, where <strong>PERMISSION_NAME</strong> is the name of the permission in the <a href="https://developers.facebook.com/docs/facebook-login/permissions/v2.2">Facebook Permissions Documentation</a>):</p>
+<ul>
+<li><a href="#fbc_logged_into_ee">if fbc_logged_into_ee</a></li>
+<li><a href="#fbc_logged_into_facebook">if fbc_logged_into_facebook</a></li>
+<li><a href="#fbc_logged_into_facebook_and_ee">if fbc_logged_into_facebook_and_ee</a></li>
+</ul>
 
-<pre class="brush: html;">{if fbc_allow_PERMISSION_NAME == "y"}{/if}</pre>
+<p><a name="fbc_logged_into_ee"></a></p>
+
+<h3>fbc_logged_into_ee</h3>
+
+<pre class="brush: html;">{if fbc_logged_into_ee == "y"}{/if} </pre>
+
+<p>This conditonal checks to see if the user is logged into EE. Similar to the native EE conditional.</p>
+
+<p><a name="fbc_logged_into_facebook"></a></p>
+
+<h3>fbc_logged_into_facebook</h3>
+
+<pre class="brush: html;">{if fbc_logged_into_facebook == "y"}{/if}</pre>
+
+<p>This conditonal checks to see if the user is logged into Facebook.</p>
+
+<p><a name="fbc_logged_into_facebook_and_ee"></a></p>
+
+<h3>fbc_logged_into_facebook_and_ee</h3>
+
+<pre class="brush: html;">{if fbc_logged_into_facebook_and_ee == "y"}{/if}</pre>
+
+<p>This conditonal checks to see if the user is logged into Facebook AND logged into EE, AND the two accounts are synced to each other.</p>
 
 <p><a name="examples"></a></p>
 
-<h2>Example</h2>
+<h2>Examples</h2>
 
-<p>Here’s an example of how you would determine some permissions of a
-logged in user:</p>
+<p>Below is an example of how to show/hide content based on whether or not the user is currently Facebook (synced) logged into your site:</p>
 
-<pre class="brush: html;">&lt;h3&gt;Permissions I have granted for {site_name}:&lt;/h3&gt;
+<pre class="brush: html;">{exp:fbc:login_status}
+    {if fbc_logged_into_facebook_and_ee == "y"}
+
+        &lt;!-- Show Facebook logged in related controls/info here --&gt;
+
+    {if:else}
+        &lt;p&gt;You have not synced your EE and Facebook accounts yet.&lt;/p&gt;
+    {/if}
+{/exp:fbc:login_status}
+</pre>
+
+<p>Below is what some troubleshooting code might look like for your site.</p>
+
+<p><strong>NOTE: Due to some security settings and limitations by Facebook, conditionals that check to see if the user is logged into Facebook will not work until the user has made some kind of interaction (to generate a valid security token to Facebook) with the Facebook Connect add-on on your site.</strong></p>
+
+<pre class="brush: html;">&lt;h3&gt;Facebook / ExpressionEngine Login Status&lt;/h3&gt;
 &lt;ul&gt;
-{exp:fbc:permissions}
+{exp:fbc:login_status}
     &lt;li&gt;
-        Public Profile?
-        &lt;b&gt;{if fbc_allow_public_profile == "y"}Yes{if:else}No{/if}&lt;/b&gt;
+        Logged into ExpressionEngine?
+        {if fbc_logged_into_ee == "y"}Yes{if:else}No{/if}
     &lt;/li&gt;
     &lt;li&gt;
-        Email Address?
-        &lt;b&gt;{if fbc_allow_email == "y"}Yes{if:else}No{/if}&lt;/b&gt;
+        Logged into Facebook?
+        {if fbc_logged_into_facebook == "y"}Yes{if:else}No{/if}
     &lt;/li&gt;
     &lt;li&gt;
-        User Friends List?
-        &lt;b&gt;{if fbc_allow_user_friends == "y"}Yes{if:else}No{/if}&lt;/b&gt;
+        Logged into Facebook and ExpressionEngine?
+        {if fbc_logged_into_ee == "y" AND fbc_logged_into_facebook == "y"}Yes{if:else}No{/if}
     &lt;/li&gt;
     &lt;li&gt;
-        Allow Publishing to Facebook?
-        &lt;b&gt;{if fbc_facebook_allow_publish_actions == "y"}Yes{if:else}No{/if}&lt;/b&gt;
+        Facebook and ExpressionEngine accounts synced?
+        {if fbc_logged_into_facebook_and_ee == "y"}Yes{if:else}No{/if}
     &lt;/li&gt;
-{/exp:fbc:permissions}
+{/exp:fbc:login_status}
 &lt;/ul&gt;
 </pre>
 			</article>

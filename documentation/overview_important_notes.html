@@ -7,7 +7,7 @@
 	<head lang="en">
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<title>Permissions | Fbc | Solspace Addon Documentation</title>
+		<title>Overview & Important Notes | Fbc | Solspace Addon Documentation</title>
 		<meta name="description" content="" />
 		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
 		<meta name="viewport" content="width=device-width" />
@@ -32,7 +32,7 @@
 				<div class="bread_crumbs">
 					<ul class="crumbs">
 						<li class="first"><a href="index.html">Fbc</a></li>
-						<li>Permissions</li>
+						<li>Overview & Important Notes</li>
 					</ul>
 				</div>
 			</div>
@@ -46,7 +46,7 @@
 <li><a href="install_update.html">Install / Update</a></li>
 <li><a href="control_panel.html">Control Panel</a></li>
 <li><a href="creating_a_facebook_app.html">Creating a Facebook App</a></li>
-<li><a href="overview_important_notes.html">Overview &amp; Important Notes</a></li>
+<li class="current"><a href="overview_important_notes.html">Overview &amp; Important Notes</a></li>
 <li><a href="behind_the_scenes.html">Behind the Scenes</a></li>
 <li><a href="publishing_to_facebook.html">Publishing to Facebook</a></li>
 <li class="template_tags"><h3>Template Tags</h3>
@@ -59,7 +59,7 @@
 <li><a href="login.html">Login</a></li>
 <li><a href="login_status.html">Login Status</a></li>
 <li><a href="member_data.html">Member Data</a></li>
-<li class="current"><a href="permissions.html">Permissions</a></li>
+<li><a href="permissions.html">Permissions</a></li>
 <li><a href="prepare_page.html">Prepare Page</a></li>
 <li><a href="set_permissions.html">Set Permissions</a></li>
 </ul></li>
@@ -75,55 +75,36 @@
 			</nav>
 
 			<article class="docs">
-				<p>Permissions from Facebook site for use on your EE site are granted during <a href="login.html">Login</a> process or <a href="set_permissions.html">Set_Permissions</a> process. This template tag allows you to check which Facebook permissions the logged in user has granted.</p>
+				<h2>Important Notes</h2>
 
-<p>Facebook allows the following permissions to be request from users without needing manual review by Facebook:</p>
+<p>Below are some important things you need to know about Solspace Facebook
+Connect (FBC):</p>
 
 <ul>
-<li><em>public_profile</em></li>
-<li><em>email</em></li>
-<li><em>user_friends</em></li>
+<li>As a security provision, no one can ever login to a Super Admin account using FBC. This can be overridden at the code level by adventurous developers.</li>
+<li>FBC will NOT work on a site that is not accessible to the internet. Facebook needs to be able to talk to your site. If your site is hosted on a local machine, hidden to the world, is password protected or otherwise offline, you will not be able to test.</li>
+<li>Absolutely NO Facebook profile data can be synced over from Facebook into your members' profile fields, as this is strictly prohibited by Facebook. If correct permissions are set and allowed by the user, only EE <em>screen name</em> and <em>email</em> will be populated with Facebook data.</li>
+<li>Facebook restricts news feed / posts to 10 per user per site per day.</li>
+<li>In order for someone to login to your EE site through Facebook, they have to click the Facebook login button. This button opens a JS pop-up window that contains an Facebook login page served by Facebook itself. There is no other login method.</li>
+<li>In order for the Facebook login button to work, you have to add some javascript code just above the <strong>&lt;/body&#62;</strong> tag of your page. Facebook Connect includes a simple tag that does the work for you. See <a href="prepare_page.html">Prepare_Page</a> documentation for more info.</li>
+<li>In order for FBC to work on your site, you have to <a href="creating_a_facebook_app.html">create a Facebook App for your site on Facebook</a>. Once you register your site you will be provided with an <em>App ID</em> and an <em>App Secret key</em>. Both of these must be entered into your Facebook Connect control panel.</li>
+<li>The Facebook Connect control panel includes a diagnostics section that helps you verify that a valid connection has been made between your site and Facebook.</li>
+<li>Do not spam users. Your use of email must comply both with <a href="https://www.facebook.com/legal/terms">Facebook policies</a> and with the <a href="https://www.ftc.gov/tips-advice/business-center/guidance/can-spam-act-compliance-guide-business">CAN-SPAM Act</a>.</li>
 </ul>
 
-<p>These are the main permissions you'll need as well, with the exception of <strong>publish_actions</strong>, which allows your users to publish data from your site onto their Facebook profile.</p>
+<p><a name="overview_of_setup"></a></p>
 
-<p>You can view the full list of permissions in the <a href="https://developers.facebook.com/docs/facebook-login/permissions/v2.2">Facebook Permissions Documentation</a>. Use the names mentioned in the User permission column.</p>
+<h2>Overview of Setup</h2>
 
-<p>If you intend on using/requesting any information other than <em>public_profile</em>, <em>email</em> and <em>user_friends</em>, you'll need to obtain permission manually from Facebook. For example, if you wish to allow users to publish content such as EE comments to the users' Facebook profile (<strong>publish_actions</strong>), you'll need to manually request permission from Facebook. You can learn more about <a href="https://developers.facebook.com/docs/apps/review/login#submitlogin">How to Submit for Login Review (Facebook Developer Documentation)</a> here.</p>
+<p>In summary, you need to complete these steps when installing Solspace Facebook Connect:</p>
 
-<p>To check against permissions granted, format your conditionals like this, where <strong>PERMISSION_NAME</strong> is the name of the permission in the <a href="https://developers.facebook.com/docs/facebook-login/permissions/v2.2">Facebook Permissions Documentation</a>):</p>
-
-<pre class="brush: html;">{if fbc_allow_PERMISSION_NAME == "y"}{/if}</pre>
-
-<p><a name="examples"></a></p>
-
-<h2>Example</h2>
-
-<p>Here’s an example of how you would determine some permissions of a
-logged in user:</p>
-
-<pre class="brush: html;">&lt;h3&gt;Permissions I have granted for {site_name}:&lt;/h3&gt;
-&lt;ul&gt;
-{exp:fbc:permissions}
-    &lt;li&gt;
-        Public Profile?
-        &lt;b&gt;{if fbc_allow_public_profile == "y"}Yes{if:else}No{/if}&lt;/b&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        Email Address?
-        &lt;b&gt;{if fbc_allow_email == "y"}Yes{if:else}No{/if}&lt;/b&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        User Friends List?
-        &lt;b&gt;{if fbc_allow_user_friends == "y"}Yes{if:else}No{/if}&lt;/b&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        Allow Publishing to Facebook?
-        &lt;b&gt;{if fbc_facebook_allow_publish_actions == "y"}Yes{if:else}No{/if}&lt;/b&gt;
-    &lt;/li&gt;
-{/exp:fbc:permissions}
-&lt;/ul&gt;
-</pre>
+<ol>
+<li><a href="install_update.html">Install</a> Solspace Facebook Connect.</li>
+<li><a href="creating_a_facebook_app.html">Create a Facebook App for your site on Facebook</a>.</li>
+<li>Copy and past the <em>App ID</em> and <em>App Secret key</em> from Facebook into your Facebook Connect control panel.</li>
+<li>Place the <a href="prepare_page.html">Prepare_Page</a> tag in the necessary site templates.</li>
+<li>Add Facebook Connect login buttons to your site page(s) as necessary.</li>
+</ol>
 			</article>
 		</div>
 

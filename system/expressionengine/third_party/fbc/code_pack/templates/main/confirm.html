@@ -1,0 +1,67 @@
+{embed="%prefix%inc/index" page_title="Confirm Sync"}
+	</head>
+
+	<body role="document">
+
+{embed="%prefix%inc/header"}
+
+		<div class="container" style="margin-top:30px;">
+
+			<div class="page-header">
+				<h1>Confirm Sync</h1>
+				<p class="lead">This is being loaded because you have <i>Confirm Before Syncing Accounts</i> enabled. It's an opportunity for you to explain some things to the user before they commit to syncing accounts.</p>
+			</div>
+
+			<div class="row">
+				<div class="col-md-8">
+				{if segment_3 == "success"}
+					<div class="alert alert-success" role="alert">
+						<p class="lead">You have successfully logged in!</p>
+						<p>You can try syncing your account to Facebook using the Facebook Login button on the right.</p>
+					</div>
+				{/if}
+				{if segment_3 == ""}
+					<div class="alert alert-info" role="alert">
+						<p>You have not yet been synced/logged in with Facebook Connect. Instead, you have been redirected to this page so we can provide you with more info before we sync your account with Facebook.</p>
+					</div>
+					<h3>Are you sure you'd like to sync your ExpressionEngine and Facebook accounts together?</h3>
+					{exp:fbc:account_sync_form
+						return_when_synced="%prefix%main/status/logged_in"
+						return_when_sync_fails="%prefix%main/status/fail"
+					}
+						<div class="form-group">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="sync" id="sync" value="yes" /> Yes, I'd like to sync my accounts
+								</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-md btn-success">Confirm Sync</button>
+						</div>
+					{/exp:fbc:account_sync_form}
+				{/if}
+				</div>
+
+				<div class="col-md-4">				
+{embed="%prefix%inc/sidebar"}
+				</div>
+			</div>
+
+			<div class="well" style="margin-top:30px;">
+				<h2 style="margin-top:5px;">About This Page</h2>
+				<p>This is being loaded because you have <i>Confirm Before Syncing Accounts</i> enabled. It's an opportunity for you to explain some things to the user before they commit to syncing accounts.</p>
+				<p>It makes use of the following tags:</p>
+				<ul>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/account_sync_form/">FBC:Account_Sync_Form</a> to display a form that allows users to confirm the Facebook account sync.</li>
+				</ul>
+				<p>The global sidebar on the right makes use of the following tags:</p>
+				<ul>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/login/">FBC:Login</a> to display a Facebook Login and Logout button, allowing logged in EE users to sync their accounts with Facebook, and allowing logged out users to easily create an account on your site.</li>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/fb_like_button/">FBC:Like</a> to display a Facebook "Like" and "Share" button on your site.</li>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/login_status/">FBC:Login_Status</a> to display some login information about the currently logged in user. This is also handy for troubleshooting while using FBC.</li>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/fb_activity_feed/">FBC:Activity_Feed</a> to display a list of all recent Facebook activity for this site amongst all users.</li>
+				</ul>
+			</div>
+
+{embed="%prefix%inc/footer"}

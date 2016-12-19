@@ -1,0 +1,142 @@
+{embed="%prefix%inc/index" page_title="Comments"}
+	</head>
+
+	<body role="document">
+
+{embed="%prefix%inc/header"}
+
+		<div class="container" style="margin-top:30px;">
+
+			<div class="page-header">
+				<h1>Comments</h1>
+				<p class="lead">This page displays info for a channel entry, and shows off the 2 different Comment methods available with Facebook Connect.</p>
+			</div>
+
+			<div class="row">
+				<div class="col-md-8">
+				{if segment_3 == "success"}
+					<div class="alert alert-success" role="alert">
+						<p class="lead">Your comment was submitted successfully!</p>
+					</div>
+				{/if}
+				{exp:channel:entries limit="1"}
+					<h3>{title}</h3>
+					<p>Author: {author}</p>
+					<p>
+					{if body}
+						{body}
+					{if:else}
+						<div class="alert alert-warning" role="alert">
+							No <b>body</b> field available. You'll need to either rename this field to one that exists on
+							your site, or create a new field called 'body' for this field to work.
+						</div>
+					{/if}
+					</p>
+
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">Facebook Comments plugin method</h3>
+						</div>
+						<div class="panel-body">
+							{exp:fbc:comments
+								href="{url_title_path='%prefix%main/comments'}"
+								num_posts="5"
+								width="100%"
+							}
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">ExpressionEngine Comments method (with Facebook integration)</h3>
+						</div>
+						<div class="panel-body">
+						{if logged_in}
+							{exp:comment:form
+								entry_id="{entry_id}"
+								return="%prefix%main/comments/success"
+							}
+								<div class="form-group required">
+									<label for="comment" class="col-sm-3 col-md-2 control-label">Comment</label>
+									<div class="col-sm-9 col-md-10">
+										<textarea name="comment" id="comment" placeholder="Enter your comment here" class="form-control" rows="3">{comment}</textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-3 col-md-offset-2 col-sm-9 col-md-10">
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" name="notify_me" id="notify_me" value="y" {notify_me} /> Notify me of follow-up comments?
+											</label>
+										</div>
+										<div class="checkbox">
+										{exp:fbc:permissions}
+											{if fbc_allow_publish_actions == "y"}
+												<label class="text-info">
+													<input type="checkbox" name="fbc_publish_to_facebook" id="fbc_publish_to_facebook" value="y" /> Also publish to my Facebook profile?
+												</label>
+											{if:else}
+												<div class="alert alert-warning" role="alert">
+													You currently don't have the correct permissions set to allow publishing to your Facebook profile from this site.
+												</div>
+											{/if}
+										{/exp:fbc:permissions}
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-3 col-md-offset-2 col-sm-9 col-md-10">
+										<button type="submit" class="btn btn-md btn-success">Submit</button>
+									</div>
+								</div>
+								{if comments_disabled}
+									<div class="alert alert-warning" role="alert">
+										Commenting has been disabled for this entry. You'll need to update this setting for this entry if you wish to allow commenting.
+									</div>
+								{/if}
+								{if comments_expired}
+									<div class="alert alert-warning" role="alert">
+										Commenting has expired for this entry. You'll need to update the comment expiration date for this entry if you wish to allow commenting.
+									</div>
+								{/if}
+							{/exp:comment:form}
+						{/if}
+						{if logged_out}
+						<div class="alert alert-warning" role="alert">
+							You must be logged in to submit comments for this site.
+						</div>
+						{/if}
+						</div>
+						<div class="panel-footer">
+{embed="%prefix%inc/ee_comments" entry_id="{entry_id}"}
+						</div>
+					</div>
+				{/exp:channel:entries}
+				</div>
+
+				<div class="col-md-4">				
+{embed="%prefix%inc/sidebar"}
+				</div>
+			</div>
+
+			<div class="well" style="margin-top:30px;">
+				<h2 style="margin-top:5px;">About This Page</h2>
+				<p>The "Comments" page displays info for a channel entry, and shows off the 2 different Comment methods available with Facebook Connect.</p>
+				<p>It makes use of the following tags:</p>
+				<ul>
+					<li><a href="https://ellislab.com/expressionengine/user-guide/add-ons/channel/channel_entries.html">EE Channel:Entries</a> to display info for a channel entry.</li>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/fb_comments_box/">FBC:Comments</a> to display the Facebook Comments plugin for posting and viewing comments for the channel entry.</li>
+					<li><a href="https://ellislab.com/expressionengine/user-guide/add-ons/comment/index.html#comment-submission-form">EE Comment:Form</a> paired with the <a href="http://www.solspace.com/docs/facebook_connect/publishing_to_facebook/#fbc_publish_to_facebook">fbc_publish_to_facebook</a> form field to display the EE Comment Form for posting comments to the channel entry and option to also publish to Facebook.</li>
+					<li><a href="https://ellislab.com/expressionengine/user-guide/add-ons/comment/index.html#comment-entries-tag">EE Comment:Entries</a> to display the EE Comment Entries listing of all comments for the channel entry.</li>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/permissions/">FBC:Permissions</a> to check if the currently logged in user has granted publish_actions permission for EE Comments (to determine if they can attempt to publish their comment to Facebook in addition to EE site).</li>
+				</ul>
+				<p>The global sidebar on the right makes use of the following tags:</p>
+				<ul>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/login/">FBC:Login</a> to display a Facebook Login and Logout button, allowing logged in EE users to sync their accounts with Facebook, and allowing logged out users to easily create an account on your site.</li>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/fb_like_button/">FBC:Like</a> to display a Facebook "Like" and "Share" button on your site.</li>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/login_status/">FBC:Login_Status</a> to display some login information about the currently logged in user. This is also handy for troubleshooting while using FBC.</li>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/fb_activity_feed/">FBC:Activity_Feed</a> to display a list of all recent Facebook activity for this site amongst all users.</li>
+				</ul>
+			</div>
+
+{embed="%prefix%inc/footer"}

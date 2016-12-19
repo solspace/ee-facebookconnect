@@ -1,0 +1,60 @@
+{embed="%prefix%inc/index" page_title="Unsync Account"}
+	</head>
+
+	<body role="document">
+
+{embed="%prefix%inc/header"}
+
+		<div class="container" style="margin-top:30px;">
+
+			<div class="page-header">
+				<h1>Unsync Account</h1>
+				<p class="lead">This page allows your users to unsync their EE and Facebook accounts.</p>
+			</div>
+
+			<div class="row">
+				<div class="col-md-8">
+					<div class="alert alert-danger" role="alert">
+						<p><strong>Warning:</strong> You are about to unsync your Facebook account from your EE account. Are you sure you'd like to unsync your accounts?</p>
+					</div>
+					{exp:fbc:account_sync_form
+						return_when_unsynced="%prefix%main/status/unsynced"
+					}
+						<div class="form-group">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="unsync" id="unsync" value="yes" /> Yes, I'd like to unsync my accounts
+								</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-md btn-danger">Unsync My Accounts</button>
+						</div>
+						<div class="alert alert-info" role="alert">
+							<p><strong>FYI:</strong> This does not completely untie your Facebook account from this EE site. After this, if you want to completely unsync the accounts you'll still need to go to your <a href="https://www.facebook.com/settings?tab=applications">Apps area in Account Settings on Facebook</a> and remove this site from the list.</p>
+						</div>
+					{/exp:fbc:account_sync_form}
+				</div>
+
+				<div class="col-md-4">				
+{embed="%prefix%inc/sidebar"}
+				</div>
+			</div>
+
+			<div class="well" style="margin-top:30px;">
+				<h2 style="margin-top:5px;">About This Page</h2>
+				<p>This page allows your users to unsync their EE and Facebook accounts.</p>
+				<p>It makes use of the following tags:</p>
+				<ul>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/account_sync_form/">FBC:Account_Sync_Form</a> to display a form that allows users to unsync their EE account from their Facebook account.</li>
+				</ul>
+				<p>The global sidebar on the right makes use of the following tags:</p>
+				<ul>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/login/">FBC:Login</a> to display a Facebook Login and Logout button, allowing logged in EE users to sync their accounts with Facebook, and allowing logged out users to easily create an account on your site.</li>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/fb_like_button/">FBC:Like</a> to display a Facebook "Like" and "Share" button on your site.</li>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/login_status/">FBC:Login_Status</a> to display some login information about the currently logged in user. This is also handy for troubleshooting while using FBC.</li>
+					<li><a href="http://www.solspace.com/docs/facebook_connect/fb_activity_feed/">FBC:Activity_Feed</a> to display a list of all recent Facebook activity for this site amongst all users.</li>
+				</ul>
+			</div>
+
+{embed="%prefix%inc/footer"}

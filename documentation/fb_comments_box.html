@@ -7,7 +7,7 @@
 	<head lang="en">
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<title>Permissions | Fbc | Solspace Addon Documentation</title>
+		<title>FB Comments Box | Fbc | Solspace Addon Documentation</title>
 		<meta name="description" content="" />
 		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
 		<meta name="viewport" content="width=device-width" />
@@ -32,7 +32,7 @@
 				<div class="bread_crumbs">
 					<ul class="crumbs">
 						<li class="first"><a href="index.html">Fbc</a></li>
-						<li>Permissions</li>
+						<li>FB Comments Box</li>
 					</ul>
 				</div>
 			</div>
@@ -54,12 +54,12 @@
 <ul>
 <li><a href="account_sync_form.html">Account Sync Form</a></li>
 <li><a href="fb_activity_feed.html">FB Activity Feed</a></li>
-<li><a href="fb_comments_box.html">FB Comments Box</a></li>
+<li class="current"><a href="fb_comments_box.html">FB Comments Box</a></li>
 <li><a href="fb_like_button.html">FB Like Button</a></li>
 <li><a href="login.html">Login</a></li>
 <li><a href="login_status.html">Login Status</a></li>
 <li><a href="member_data.html">Member Data</a></li>
-<li class="current"><a href="permissions.html">Permissions</a></li>
+<li><a href="permissions.html">Permissions</a></li>
 <li><a href="prepare_page.html">Prepare Page</a></li>
 <li><a href="set_permissions.html">Set Permissions</a></li>
 </ul></li>
@@ -75,54 +75,89 @@
 			</nav>
 
 			<article class="docs">
-				<p>Permissions from Facebook site for use on your EE site are granted during <a href="login.html">Login</a> process or <a href="set_permissions.html">Set_Permissions</a> process. This template tag allows you to check which Facebook permissions the logged in user has granted.</p>
+				<p>The Facebook Comments box lets people comment on content on your site using their Facebook profile and shows this activity to their friends in news feed. It also contains built-in moderation tools and special social relevance ranking.</p>
 
-<p>Facebook allows the following permissions to be request from users without needing manual review by Facebook:</p>
+<p>You can integrate the Facebook <em>Comments</em> box on your site. This is a social plugin, so users do NOT have to have synced accounts to comment through this on your site using the Facebook <em>Comments</em> box. They just need to be logged into Facebook.</p>
+
+<pre class="brush: html;">{exp:fbc:comments}</pre>
+
+<p><img src="images/fbc_docs_comments.gif" alt="" /></p>
 
 <ul>
-<li><em>public_profile</em></li>
-<li><em>email</em></li>
-<li><em>user_friends</em></li>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#examples">Examples</a></li>
 </ul>
 
-<p>These are the main permissions you'll need as well, with the exception of <strong>publish_actions</strong>, which allows your users to publish data from your site onto their Facebook profile.</p>
+<p><a name="parameters"></a></p>
 
-<p>You can view the full list of permissions in the <a href="https://developers.facebook.com/docs/facebook-login/permissions/v2.2">Facebook Permissions Documentation</a>. Use the names mentioned in the User permission column.</p>
+<h2>Parameters</h2>
 
-<p>If you intend on using/requesting any information other than <em>public_profile</em>, <em>email</em> and <em>user_friends</em>, you'll need to obtain permission manually from Facebook. For example, if you wish to allow users to publish content such as EE comments to the users' Facebook profile (<strong>publish_actions</strong>), you'll need to manually request permission from Facebook. You can learn more about <a href="https://developers.facebook.com/docs/apps/review/login#submitlogin">How to Submit for Login Review (Facebook Developer Documentation)</a> here.</p>
+<p>The following parameters are available for use:</p>
 
-<p>To check against permissions granted, format your conditionals like this, where <strong>PERMISSION_NAME</strong> is the name of the permission in the <a href="https://developers.facebook.com/docs/facebook-login/permissions/v2.2">Facebook Permissions Documentation</a>):</p>
+<ul>
+<li><a href="#href">href</a></li>
+<li><a href="#num_posts">num_posts</a></li>
+<li><a href="#width">width</a></li>
+<li><a href="#colorscheme">colorscheme</a></li>
+</ul>
 
-<pre class="brush: html;">{if fbc_allow_PERMISSION_NAME == "y"}{/if}</pre>
+<p><a name="href"></a></p>
+
+<h3>href=</h3>
+
+<pre class="brush: html;">href="{url_title_path='news/article'}"</pre>
+
+<p>The permanent URL of the entry that is being commented on. For example:</p>
+
+<ul>
+<li><strong>http://www.yoursite.com</strong></li>
+<li><strong>{site_url}</strong></li>
+<li><strong>{url_title_path='news/article'}</strong></li>
+<li><strong>http://www.site.com/{segment_2}/{segment_3}/</strong></li>
+</ul>
+
+<p><a name="num_posts"></a></p>
+
+<h3>num_posts=</h3>
+
+<pre class="brush: html;">num_posts="5"</pre>
+
+<p>This parameter allows you to set the maximum number of comments you'd like the Comment box to show by default. If there are more comments than the value you set, user's will see a <em>View more</em> link that will load more comments via AJAX. Default is <strong>5</strong>.</p>
+
+<p><a name="width"></a></p>
+
+<h3>width=</h3>
+
+<pre class="brush: html;">width="500"</pre>
+
+<p>This parameter allows you to set the width (in pixels) of the Comment box. Default is <strong>400</strong>.</p>
+
+<p><a name="colorscheme"></a></p>
+
+<h3>colorscheme=</h3>
+
+<pre class="brush: html;">colorscheme="dark"</pre>
+
+<p>This parameter allows you to control the color scheme of the Comment box with predetermined Facebook options. Options are <strong>light</strong> or <strong>dark</strong>.</p>
 
 <p><a name="examples"></a></p>
 
-<h2>Example</h2>
+<h2>Examples</h2>
 
-<p>Here’s an example of how you would determine some permissions of a
-logged in user:</p>
+<p>Below is some example code on how to display the Facebook Comment box on your site:</p>
 
-<pre class="brush: html;">&lt;h3&gt;Permissions I have granted for {site_name}:&lt;/h3&gt;
-&lt;ul&gt;
-{exp:fbc:permissions}
-    &lt;li&gt;
-        Public Profile?
-        &lt;b&gt;{if fbc_allow_public_profile == "y"}Yes{if:else}No{/if}&lt;/b&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        Email Address?
-        &lt;b&gt;{if fbc_allow_email == "y"}Yes{if:else}No{/if}&lt;/b&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        User Friends List?
-        &lt;b&gt;{if fbc_allow_user_friends == "y"}Yes{if:else}No{/if}&lt;/b&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        Allow Publishing to Facebook?
-        &lt;b&gt;{if fbc_facebook_allow_publish_actions == "y"}Yes{if:else}No{/if}&lt;/b&gt;
-    &lt;/li&gt;
-{/exp:fbc:permissions}
-&lt;/ul&gt;
+<pre class="brush: html;">{exp:channel:entries require_entry="yes"}
+    &lt;h2&gt;{title}&lt;/h2&gt;
+    &lt;p&gt;{body}&lt;/p&gt;
+
+    &lt;h3&gt;Comments&lt;/h3&gt;
+    {exp:fbc:comments
+        href="{url_title_path='news/article'}"
+        num_posts="5"
+        width="500"
+        colorscheme="light"
+    }
+{/exp:channel:entries}
 </pre>
 			</article>
 		</div>

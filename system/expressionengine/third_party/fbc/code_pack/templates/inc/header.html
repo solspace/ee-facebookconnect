@@ -1,0 +1,39 @@
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="{path='%prefix%main'}/">Facebook Connect Demo</a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li{if segment_2 == ""} class="active"{/if}><a href="{path='%prefix%main'}/">Profile</a></li>
+						<li{if segment_2 == "permissions"} class="active"{/if}><a href="{path='%prefix%main/permissions'}/">Permissions</a></li>
+						<li{if segment_2 == "comments"} class="active"{/if}><a href="{path='%prefix%main/comments'}/">Comments</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+					{if logged_in}
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <span class="caret"></span></a>
+							<ul class="dropdown-menu{if embed:page == "account"} active{/if}" role="menu">
+								<li><a href="{path='%prefix%main'}/">View My Profile</a></li>
+								<li><a href="{path='logout'}">Logout</a></li>
+							</ul>
+						</li>
+					{/if}
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="http://solspace.com/">Solspace.com</a></li>
+								<li><a href="http://solspace.com/docs/facebook_connect/">Documentation</a></li>
+								<li><a href="http://solspace.com/support/">Support</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>

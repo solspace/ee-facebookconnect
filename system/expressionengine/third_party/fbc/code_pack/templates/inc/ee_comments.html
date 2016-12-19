@@ -1,0 +1,48 @@
+							<br />
+							<ul class="media-list">
+							{exp:comment:entries
+								entry_id="{embed:entry_id}"
+								sort="asc"
+								limit="10"
+							}
+								<li id="rating-{rating_id}" class="media">
+								{exp:fbc:member_data
+									member_id="{author_id}"
+									profile_pic_type="small"
+									profile_pic_width="70"
+									profile_pic_height="70"
+								}
+									<div class="media-left">
+										{if fbc_facebook_profile_pic}
+											{!-- FB profile pic, if user's account is synced to FB --}
+											<a href="{fbc_facebook_link}">{fbc_facebook_profile_pic}</a>
+										{if:else}
+											<!-- EE avatar, if user's account is NOT synced to FB -->
+											<img src="{if avatar}{avatar_url}{if:else}{exp:rating:theme_folder_url}code_pack/images/no-profile-pic.jpg{/if}" class="media-object" height="74" width="74" alt="{author}'s avatar" />
+										{/if}
+									</div>
+									<div class="media-body">
+										<h4 class="media-heading">
+											{if fbc_facebook_name}
+												<!-- FB full name, if user's account is synced to FB -->
+												<a href="{fbc_facebook_link}">{fbc_facebook_name}</a>
+												<small><span class="label label-primary"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Facebook</span></small>
+											{if:else}
+												<!-- EE screen name, if user's account is NOT synced to FB -->
+												{author}
+												<small><span class="label label-default"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> EE</span></small>
+											{/if}
+											<small>on {comment_date format="%F %j, %Y at %g:%i %a"}</small>
+										</h4>
+										<p>{comment}</p>
+									</div>
+								{/exp:fbc:member_data}
+								</li>
+								{if count != total_results}
+									<hr />
+								{/if}
+								{if no_results}
+									<li>There are currently no comments submitted for this entry yet.</li>
+								{/if}
+							{/exp:comment:entries}
+							</ul>

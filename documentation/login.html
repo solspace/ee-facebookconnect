@@ -41,41 +41,41 @@
 		<div class="content-wrapper">
 			<nav class="toc">
 				<ul>
-<li><h3>Setup</h3>
+<li><a href="http://www.solspace.com/software/detail/facebook_connect/">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
+<li><a href="creating_a_facebook_app.html">Creating a Facebook App</a></li>
+<li><a href="overview_important_notes.html">Overview &amp; Important Notes</a></li>
+<li><a href="behind_the_scenes.html">Behind the Scenes</a></li>
+<li><a href="publishing_to_facebook.html">Publishing to Facebook</a></li>
+<li class="template_tags"><h3>Template Tags</h3>
 
 <ul>
-<li><a href="installation.html">Installation</a></li>
-<li><a href="updates.html">Updates</a></li>
-</ul></li>
-<li><h3>Getting Started</h3>
-
-<ul>
-<li><a href="control-panel.html">Control Panel</a></li>
-<li><a href="creating-a-facebook-app.html">Creating a Facebook App</a></li>
-<li><a href="overview-important-notes.html">Overview &amp; Important Notes</a></li>
-<li><a href="behind-the-scenes.html">Behind the Scenes</a></li>
-<li><a href="publishing-to-facebook.html">Publishing to Facebook</a></li>
-</ul></li>
-<li><h3>Templating</h3>
-
-<ul>
-<li><a href="account-sync-form.html">Account Sync Form</a></li>
-<li><a href="fb-comments-box.html">FB Comments Box</a></li>
-<li><a href="fb-like-button.html">FB Like Button</a></li>
+<li><a href="account_sync_form.html">Account Sync Form</a></li>
+<li><a href="fb_activity_feed.html">FB Activity Feed</a></li>
+<li><a href="fb_comments_box.html">FB Comments Box</a></li>
+<li><a href="fb_like_button.html">FB Like Button</a></li>
 <li class="current"><a href="login.html">Login</a></li>
-<li><a href="login-status.html">Login Status</a></li>
-<li><a href="member-data.html">Member Data</a></li>
+<li><a href="login_status.html">Login Status</a></li>
+<li><a href="member_data.html">Member Data</a></li>
 <li><a href="permissions.html">Permissions</a></li>
-<li><a href="prepare-page.html">Prepare Page</a></li>
-<li><a href="set-permissions.html">Set Permissions</a></li>
+<li><a href="prepare_page.html">Prepare Page</a></li>
+<li><a href="set_permissions.html">Set Permissions</a></li>
 </ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.6.x - 2.9.x</li>
+<li>PHP 5.3+</li>
+<li>MySQL 5+</li>
+<li><a href="http://php.net/manual/en/book.curl.php">cURL</a></li>
+</ul></div></li>
 </ul>
 			</nav>
 
 			<article class="docs">
-				<h1>FBC:Login template tag</h1>
-
-<p>The <em>FBC:Login</em> tag allows you to display a Facebook login (and logout) button on your page. It shows the appropriate button depending on the current user's FB login state. Additionally, you can set return pages for every scenario possible when logging in/out.</p>
+				<p>The <em>FBC:Login</em> tag allows you to display a Facebook login (and logout) button on your page. It shows the appropriate button depending on the current user's FB login state. Additionally, you can set return pages for every scenario possible when logging in/out.</p>
 
 <pre class="brush: html;">{exp:fbc:login} content {/exp:fbc:login}</pre>
 
@@ -117,7 +117,9 @@
 
 <pre class="brush: html;">login_button_label="Facebook Login"</pre>
 
-<p>Use this parameter to change the text label of the Facebook Login button. For example, you can type in a value of <strong>Login with Facebook</strong> or <strong>Connect with Facebook</strong>. Default is <strong>Log In</strong>.</p>
+<p>Use this parameter to change the text label of the Facebook Login
+button. For example, you can type in a value of <strong>Login with Facebook</strong> or
+<strong>Connect with Facebook</strong>. Default is <strong>Log In</strong>.</p>
 
 <p><a name="button_size"></a></p>
 
@@ -125,7 +127,8 @@
 
 <pre class="brush: html;">button_size="large"</pre>
 
-<p>Use this parameter to change the size of the Facebook Login button. You can only choose from predetermined options from Facebook: <strong>small</strong>, <strong>medium</strong> (default), <strong>large</strong>, or <strong>xlarge</strong>.</p>
+<p>Use this parameter to change the size of the Facebook Login button. You
+can only choose from predetermined options from Facebook: <strong>small</strong>, <strong>medium</strong> (default), <strong>large</strong>, or <strong>xlarge</strong>.</p>
 
 <p><a name="show_faces"></a></p>
 
@@ -133,7 +136,8 @@
 
 <pre class="brush: html;">show_faces="true"</pre>
 
-<p>This parameter allows you to specify whether to display profile photos of the users' friends below the Login button. Default is <strong>false</strong>.</p>
+<p>This parameter allows you to specify whether to display profile photos
+of the users' friends below the Login button. Default is <strong>false</strong>.</p>
 
 <p><a name="max_rows"></a></p>
 
@@ -141,7 +145,8 @@
 
 <pre class="brush: html;">max_rows="1"</pre>
 
-<p>This parameter controls the total number of rows of friends pictures to add under the Login button. Default is <strong>1</strong> row.</p>
+<p>This parameter controls the total number of rows of friends pictures to
+add under the Login button. Default is <strong>1</strong> row.</p>
 
 <p><a name="width"></a></p>
 
@@ -159,9 +164,9 @@
 
 <p>This parameter allows you to provide a list of permissions (seperate with pipe character) to request from the user while they login. Default permissions requested are: <em>public_profile</em>. Additionally available (without needing any manual review by Facebook) are <em>email</em> and <em>user_friends</em>. These are the main permissions you'll need as well, with the exception of <strong>publish_actions</strong>, which allows your users to publish data from your site onto their Facebook profile.</p>
 
-<p>You can view the full list of permissions in the <a href="https://developers.facebook.com/docs/facebook-login/permissions">Facebook Permissions Documentation</a>. Use the names mentioned in the User permission column.</p>
+<p>You can view the full list of permissions in the <a href="https://developers.facebook.com/docs/facebook-login/permissions/v2.2">Facebook Permissions Documentation</a>. Use the names mentioned in the User permission column.</p>
 
-<p>If you intend on using/requesting any information other than <em>public_profile</em>, <em>email</em> and <em>user_friends</em>, you'll need to obtain permission manually from Facebook. For example, if you wish to allow users to publish content such as EE comments to the users' Facebook profile (<strong>publish_actions</strong>), you'll need to manually request permission from Facebook. You can learn more about <a href="https://developers.facebook.com/docs/facebook-login/review/how-to-submit">How to Submit for Login Review (Facebook Developer Documentation)</a> here.</p>
+<p>If you intend on using/requesting any information other than <em>public_profile</em>, <em>email</em> and <em>user_friends</em>, you'll need to obtain permission manually from Facebook. For example, if you wish to allow users to publish content such as EE comments to the users' Facebook profile (<strong>publish_actions</strong>), you'll need to manually request permission from Facebook. You can learn more about <a href="https://developers.facebook.com/docs/apps/review/login#submitlogin">How to Submit for Login Review (Facebook Developer Documentation)</a> here.</p>
 
 <p><a name="return_when_logged_in"></a></p>
 
@@ -185,7 +190,8 @@
 
 <pre class="brush: html;">return_to_register="fbc/register"</pre>
 
-<p>If someone attempts to Facebook login and they are not a logged-in EE user they are redirected to this page. You could use this to display a page that describes the Facebook login/registration process to the user, and then have them click another button to continue to the Register form. This parameter will be ignored if you have the <em>Passive Registrations</em> preference set to <strong>Yes</strong> in the FBC control panel.</p>
+<p>If someone attempts to Facebook login and they are not a logged-in EE user they are redirected to this page. You could use this to display a page that describes the Facebook login/registration process to the user, and then have them click another button to continue to the Register form. This parameter will be ignored
+if you have the <em>Passive Registrations</em> preference set to <strong>Yes</strong> in the FBC control panel.</p>
 
 <p><a name="return_for_passive_register"></a></p>
 
